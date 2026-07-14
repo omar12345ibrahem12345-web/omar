@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - Prestige Realty HR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="8" fill="#C9A84C"/>
+                    <path d="M10 26V12l8-4 8 4v14" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 26V18h8v8" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="sidebar-brand-text">
+                    <h2>Prestige Realty</h2>
+                    <span>HR Management</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Main</div>
+                <a href="index.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Dashboard
+                </a>
+                <a href="employees.html" class="sidebar-link active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Employees
+                </a>
+                <a href="recruiting.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Recruiting
+                </a>
+                <a href="payroll.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Payroll &amp; Benefits
+                </a>
+                <div class="sidebar-section-title">Properties</div>
+                <a href="properties.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+                    Property Listings
+                </a>
+                <div class="sidebar-section-title">Analytics</div>
+                <a href="reports.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Reports &amp; Analytics
+                </a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="top-header-left">
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <h1 class="page-title">Employees &amp; Deductions</h1>
+                </div>
+                <div class="top-header-right">
+                    <div class="header-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" placeholder="Search employees...">
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-btn" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="user-avatar">SM</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Deductions Summary -->
+                <div class="summary-cards">
+                    <div class="summary-card gross">
+                        <h4 id="totalGrossStat">$0</h4>
+                        <p>Total Gross Salary</p>
+                    </div>
+                    <div class="summary-card deductions">
+                        <h4 id="totalDeductionsStat">-$0</h4>
+                        <p>Total Deductions</p>
+                    </div>
+                    <div class="summary-card net">
+                        <h4 id="totalNetStat">$0</h4>
+                        <p>Total Net Pay</p>
+                    </div>
+                    <div class="summary-card count">
+                        <h4 id="employeeCountStat">0</h4>
+                        <p>Employees</p>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <div class="toolbar-left">
+                        <button class="filter-btn active">All Employees</button>
+                        <button class="filter-btn">Active</button>
+                        <button class="filter-btn">On Leave</button>
+                    </div>
+                    <button class="btn btn-primary" data-modal="addEmployeeModal">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Employee
+                    </button>
+                </div>
+
+                <!-- Employees Table with Deductions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>All Employees &amp; Deductions</h3>
+                        <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);margin:0;">Enter and manage deductions for every employee. Click Edit to change any employee's deductions.</p>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Department</th>
+                                    <th>Position</th>
+                                    <th>Gross Salary</th>
+                                    <th>Deductions</th>
+                                    <th>Net Pay (Annual)</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Employee Modal (with deductions) -->
+    <div class="modal-overlay" id="addEmployeeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Employee</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleAddEmployee(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" class="form-input" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="employee@prestige.com" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select name="department" class="form-input" required>
+                                <option value="">Select department</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Legal">Legal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" name="position" class="form-input" placeholder="Job title" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" name="startDate" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Annual Salary ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="salary" class="form-input" min="0" step="1000" placeholder="e.g. 75000" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deductions Section -->
+                    <div class="deduction-fields-grid">
+                        <div class="deduction-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                            Salary Deductions
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">T</span> Income Tax ($)</label>
+                            <input type="number" name="deductionIncomeTax" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">S</span> Social Security ($)</label>
+                            <input type="number" name="deductionSocialSecurity" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">M</span> Medicare ($)</label>
+                            <input type="number" name="deductionMedicare" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">H</span> Health Insurance ($)</label>
+                            <input type="number" name="deductionHealth" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">R</span> 401(k) Retirement ($)</label>
+                            <input type="number" name="deduction401k" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">C</span> Custom Deduction ($)</label>
+                            <input type="number" name="deductionCustom" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Employee with Deductions</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Employee Modal (with deductions) -->
+    <div class="modal-overlay" id="editEmployeeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Employee &amp; Deductions</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleEditEmployee(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="editEmpId">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="editName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="editEmail" class="form-input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select name="editDepartment" class="form-input">
+                                <option value="Sales">Sales</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Legal">Legal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" name="editPosition" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" name="editStartDate" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Annual Salary ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="editSalary" class="form-input" min="0" step="1000" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="editStatus" class="form-input">
+                            <option value="Active">Active</option>
+                            <option value="On Leave">On Leave</option>
+                            <option value="Terminated">Terminated</option>
+                        </select>
+                    </div>
+
+                    <!-- Deductions Section -->
+                    <div class="deduction-fields-grid">
+                        <div class="deduction-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                            Edit Salary Deductions
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">T</span> Income Tax ($)</label>
+                            <input type="number" name="editDeductionIncomeTax" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">S</span> Social Security ($)</label>
+                            <input type="number" name="editDeductionSocialSecurity" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">M</span> Medicare ($)</label>
+                            <input type="number" name="editDeductionMedicare" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">H</span> Health Insurance ($)</label>
+                            <input type="number" name="editDeductionHealth" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">R</span> 401(k) Retirement ($)</label>
+                            <input type="number" name="editDeduction401k" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">C</span> Custom Deduction ($)</label>
+                            <input type="number" name="editDeductionCustom" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Employee &amp; Deductions</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        updateDeductionStats();
+    });
+    </script>
+</body>
+</html>

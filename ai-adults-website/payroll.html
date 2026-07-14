@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll & Benefits - Prestige Realty HR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="8" fill="#C9A84C"/>
+                    <path d="M10 26V12l8-4 8 4v14" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 26V18h8v8" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="sidebar-brand-text">
+                    <h2>Prestige Realty</h2>
+                    <span>HR Management</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Main</div>
+                <a href="index.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Dashboard
+                </a>
+                <a href="employees.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Employees
+                </a>
+                <a href="recruiting.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Recruiting
+                </a>
+                <a href="payroll.html" class="sidebar-link active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Payroll &amp; Benefits
+                </a>
+                <div class="sidebar-section-title">Properties</div>
+                <a href="properties.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+                    Property Listings
+                </a>
+                <div class="sidebar-section-title">Analytics</div>
+                <a href="reports.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Reports &amp; Analytics
+                </a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="top-header-left">
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <h1 class="page-title">Payroll &amp; Benefits</h1>
+                </div>
+                <div class="top-header-right">
+                    <div class="header-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" placeholder="Search employees...">
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-btn" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="user-avatar">SM</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="page-hero">
+                    <h1>Payroll &amp; Senior Employees</h1>
+                    <p>Add senior employees with their salaries and deductions, manage benefits plans, and view payroll history.</p>
+                </div>
+
+                <!-- Senior Employee Stats -->
+                <div class="summary-cards">
+                    <div class="summary-card count">
+                        <h4 id="seniorCount">0</h4>
+                        <p>Senior Employees</p>
+                    </div>
+                    <div class="summary-card gross">
+                        <h4 id="seniorTotalSalary">$0</h4>
+                        <p>Senior Total Salary</p>
+                    </div>
+                    <div class="summary-card deductions">
+                        <h4 id="seniorTotalDeductions">-$0</h4>
+                        <p>Senior Deductions</p>
+                    </div>
+                    <div class="summary-card net">
+                        <h4 id="seniorTotalNet">$0</h4>
+                        <p>Senior Net Pay</p>
+                    </div>
+                </div>
+
+                <!-- Add Senior Employee Form -->
+                <div class="data-entry-section">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        Add New Senior Employee
+                    </h3>
+                    <form id="addSeniorForm" onsubmit="handleAddSenior(event)">
+                        <div class="mini-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" name="seniorName" class="form-input" placeholder="Senior employee name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="seniorEmail" class="form-input" placeholder="email@prestige.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select name="seniorDepartment" class="form-input">
+                                    <option value="Senior Management">Senior Management</option>
+                                    <option value="VP Sales">VP Sales</option>
+                                    <option value="VP Marketing">VP Marketing</option>
+                                    <option value="VP Finance">VP Finance</option>
+                                    <option value="VP Operations">VP Operations</option>
+                                    <option value="CEO Office">CEO Office</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Annual Salary ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="seniorSalary" class="form-input" min="0" step="1000" placeholder="e.g. 150000" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Senior Deductions -->
+                        <div class="deduction-fields-grid">
+                            <div class="deduction-section-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                                Senior Employee Deductions
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">T</span> Income Tax ($)</label>
+                                <input type="number" name="seniorDeductionIncomeTax" class="form-input" min="0" step="100" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">S</span> Social Security ($)</label>
+                                <input type="number" name="seniorDeductionSocialSecurity" class="form-input" min="0" step="100" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">M</span> Medicare ($)</label>
+                                <input type="number" name="seniorDeductionMedicare" class="form-input" min="0" step="10" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">H</span> Health Insurance ($)</label>
+                                <input type="number" name="seniorDeductionHealth" class="form-input" min="0" step="10" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">R</span> 401(k) Retirement ($)</label>
+                                <input type="number" name="seniorDeduction401k" class="form-input" min="0" step="100" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="deduction-icon">C</span> Custom Deduction ($)</label>
+                                <input type="number" name="seniorDeductionCustom" class="form-input" min="0" step="10" placeholder="0">
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--space-md);">
+                            <button type="submit" class="btn btn-primary">Add Senior Employee</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Senior Employees Table -->
+                <div class="card" style="margin-bottom: var(--space-xl);">
+                    <div class="card-header">
+                        <h3>Senior Employees</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Department</th>
+                                    <th>Gross Salary</th>
+                                    <th>Total Deductions</th>
+                                    <th>Net Pay</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="seniorTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Payroll History -->
+                <div class="card" style="margin-bottom: var(--space-xl);">
+                    <div class="card-header">
+                        <h3>Payroll History</h3>
+                        <button class="btn btn-secondary btn-sm" onclick="window.print()">Export</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Pay Period</th>
+                                    <th>Employees</th>
+                                    <th>Gross Pay</th>
+                                    <th>Deductions</th>
+                                    <th>Net Pay</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salaryTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Add Salary Period -->
+                <div class="card" style="margin-bottom: var(--space-xl);">
+                    <div class="card-header">
+                        <h3>Add Payroll Period</h3>
+                    </div>
+                    <form id="salaryEntryForm" style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <div class="mini-form">
+                            <div class="form-group">
+                                <label>Pay Period</label>
+                                <input type="text" name="payPeriod" class="form-input" placeholder="e.g. Jul 16-31, 2026" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Employee Count</label>
+                                <input type="number" name="employeeCount" class="form-input" min="1" placeholder="Number of employees" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gross Pay ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="grossPay" class="form-input" min="0" step="100" placeholder="Total gross" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Total Deductions ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="deductions" class="form-input" min="0" step="100" placeholder="Total deductions" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-primary">Add Payroll Period</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Benefits Plans -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Employee Benefits Plans</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Benefit Plan</th>
+                                    <th>Cost</th>
+                                    <th>Enrolled</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="benefitTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Add Benefit Plan -->
+                <div class="card" style="margin-top: var(--space-xl);">
+                    <div class="card-header">
+                        <h3>Add Benefit Plan</h3>
+                    </div>
+                    <form id="benefitPlanForm" style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <div class="mini-form">
+                            <div class="form-group">
+                                <label>Plan Name</label>
+                                <input type="text" name="benefitName" class="form-input" placeholder="e.g. Dental Plan" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Monthly Cost ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="benefitCost" class="form-input" min="0" step="5" placeholder="Cost per employee/month">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Note</label>
+                                <input type="text" name="benefitNote" class="form-input" placeholder="e.g. 4% employer match">
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-primary">Add Benefit Plan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Senior Modal -->
+    <div class="modal-overlay" id="editSeniorModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Senior Employee</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleEditSenior(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="editSeniorId">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="editSeniorName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="editSeniorEmail" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select name="editSeniorDepartment" class="form-input">
+                            <option value="Senior Management">Senior Management</option>
+                            <option value="VP Sales">VP Sales</option>
+                            <option value="VP Marketing">VP Marketing</option>
+                            <option value="VP Finance">VP Finance</option>
+                            <option value="VP Operations">VP Operations</option>
+                            <option value="CEO Office">CEO Office</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Annual Salary ($)</label>
+                        <div class="salary-input-group">
+                            <span>$</span>
+                            <input type="number" name="editSeniorSalary" class="form-input" min="0" step="1000" required>
+                        </div>
+                    </div>
+
+                    <div class="deduction-fields-grid">
+                        <div class="deduction-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                            Edit Deductions
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">T</span> Income Tax ($)</label>
+                            <input type="number" name="editSeniorDeductionIncomeTax" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">S</span> Social Security ($)</label>
+                            <input type="number" name="editSeniorDeductionSocialSecurity" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">M</span> Medicare ($)</label>
+                            <input type="number" name="editSeniorDeductionMedicare" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">H</span> Health Insurance ($)</label>
+                            <input type="number" name="editSeniorDeductionHealth" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">R</span> 401(k) Retirement ($)</label>
+                            <input type="number" name="editSeniorDeduction401k" class="form-input" min="0" step="100" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="deduction-icon">C</span> Custom Deduction ($)</label>
+                            <input type="number" name="editSeniorDeductionCustom" class="form-input" min="0" step="10" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
