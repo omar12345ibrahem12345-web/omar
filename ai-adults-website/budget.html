@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget - Prestige Realty HR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="8" fill="#C9A84C"/>
+                    <path d="M10 26V12l8-4 8 4v14" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 26V18h8v8" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="sidebar-brand-text">
+                    <h2>Prestige Realty</h2>
+                    <span>HR Management</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Main</div>
+                <a href="index.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Dashboard
+                </a>
+                <a href="employees.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Employees
+                </a>
+                <a href="recruiting.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Recruiting
+                </a>
+                <a href="payroll.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Payroll &amp; Benefits
+                </a>
+                <div class="sidebar-section-title">Finance</div>
+                <a href="budget.html" class="sidebar-link active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg>
+                    Budget
+                </a>
+                <div class="sidebar-section-title">Properties</div>
+                <a href="properties.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+                    Property Listings
+                </a>
+                <div class="sidebar-section-title">Analytics</div>
+                <a href="reports.html" class="sidebar-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Reports &amp; Analytics
+                </a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="top-header-left">
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <h1 class="page-title">Budget Management</h1>
+                </div>
+                <div class="top-header-right">
+                    <div class="header-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" placeholder="Search budgets...">
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-btn" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="user-avatar">SM</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="page-hero">
+                    <h1>Budget Management</h1>
+                    <p>Set and track budgets for every job position and project. Monitor spending against allocated budgets across the company.</p>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card gross">
+                        <h4 id="budgetTotalAllocated">$0</h4>
+                        <p>Total Job Budget</p>
+                    </div>
+                    <div class="summary-card deductions">
+                        <h4 id="budgetTotalSpent">$0</h4>
+                        <p>Total Job Spent</p>
+                    </div>
+                    <div class="summary-card net">
+                        <h4 id="budgetProjectTotal">$0</h4>
+                        <p>Total Project Budget</p>
+                    </div>
+                    <div class="summary-card count">
+                        <h4 id="budgetProjectSpent">$0</h4>
+                        <p>Total Project Spent</p>
+                    </div>
+                </div>
+
+                <!-- JOB BUDGET SECTION -->
+                <div class="data-entry-section">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        Add Job Budget
+                    </h3>
+                    <form id="addJobBudgetForm" onsubmit="handleAddJobBudget(event)">
+                        <div class="mini-form">
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" name="jobTitle" class="form-input" placeholder="e.g. Senior Agent" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select name="jobDepartment" class="form-input" required>
+                                    <option value="">Select</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Legal">Legal</option>
+                                    <option value="Operations">Operations</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Headcount</label>
+                                <input type="number" name="jobHeadcount" class="form-input" min="0" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Allocated Budget ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="jobAllocated" class="form-input" min="0" step="1000" placeholder="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Spent So Far ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="jobSpent" class="form-input" min="0" step="100" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Notes</label>
+                                <input type="text" name="jobNotes" class="form-input" placeholder="Optional notes">
+                            </div>
+                        </div>
+                        <div style="margin-top: var(--space-md);">
+                            <button type="submit" class="btn btn-primary">Add Job Budget</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Job Budget Table -->
+                <div class="card" style="margin-bottom: var(--space-xl);">
+                    <div class="card-header">
+                        <h3>Job Position Budgets</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <th>Department</th>
+                                    <th>Headcount</th>
+                                    <th>Allocated</th>
+                                    <th>Spent</th>
+                                    <th>Usage</th>
+                                    <th>Notes</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jobBudgetBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PROJECT BUDGET SECTION -->
+                <div class="data-entry-section">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Add Project Budget
+                    </h3>
+                    <form id="addProjectBudgetForm" onsubmit="handleAddProjectBudget(event)">
+                        <div class="mini-form">
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" name="projectName" class="form-input" placeholder="e.g. Office Renovation" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Project Type</label>
+                                <select name="projectType" class="form-input">
+                                    <option value="General">General</option>
+                                    <option value="Marketing Campaign">Marketing Campaign</option>
+                                    <option value="Office Expansion">Office Expansion</option>
+                                    <option value="Tech Upgrade">Tech Upgrade</option>
+                                    <option value="Training Program">Training Program</option>
+                                    <option value="Event">Event</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Total Budget ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="projectBudget" class="form-input" min="0" step="1000" placeholder="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Spent So Far ($)</label>
+                                <div class="salary-input-group">
+                                    <span>$</span>
+                                    <input type="number" name="projectSpent" class="form-input" min="0" step="100" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="projectStatus" class="form-input">
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-top: var(--space-md);">
+                            <button type="submit" class="btn btn-primary">Add Project Budget</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Project Budget Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Project Budgets</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Type</th>
+                                    <th>Budget</th>
+                                    <th>Spent</th>
+                                    <th>Usage</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectBudgetBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Job Budget Modal -->
+    <div class="modal-overlay" id="editJobBudgetModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Job Budget</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleEditJobBudget(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="editJobIndex">
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" name="editJobTitle" class="form-input" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select name="editJobDepartment" class="form-input">
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Headcount</label>
+                            <input type="number" name="editJobHeadcount" class="form-input" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Allocated Budget ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="editJobAllocated" class="form-input" min="0" step="1000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Spent So Far ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="editJobSpent" class="form-input" min="0" step="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <input type="text" name="editJobNotes" class="form-input" placeholder="Optional notes">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Project Budget Modal -->
+    <div class="modal-overlay" id="editProjectBudgetModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Project Budget</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleEditProjectBudget(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="editProjectIndex">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" name="editProjectName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Type</label>
+                        <select name="editProjectType" class="form-input">
+                            <option value="General">General</option>
+                            <option value="Marketing Campaign">Marketing Campaign</option>
+                            <option value="Office Expansion">Office Expansion</option>
+                            <option value="Tech Upgrade">Tech Upgrade</option>
+                            <option value="Training Program">Training Program</option>
+                            <option value="Event">Event</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Total Budget ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="editProjectBudget" class="form-input" min="0" step="1000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Spent So Far ($)</label>
+                            <div class="salary-input-group">
+                                <span>$</span>
+                                <input type="number" name="editProjectSpent" class="form-input" min="0" step="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="editProjectStatus" class="form-input">
+                            <option value="Active">Active</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

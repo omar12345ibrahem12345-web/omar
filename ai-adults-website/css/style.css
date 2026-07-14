@@ -1324,6 +1324,33 @@ p { color: var(--color-text-light); margin-bottom: var(--space-md); }
     .deduction-fields-grid { grid-template-columns: 1fr; }
 }
 
+/* Budget Progress Bar */
+.budget-progress {
+    position: relative;
+    width: 100%;
+    height: 22px;
+    background: #EDF2F7;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.budget-progress-bar {
+    height: 100%;
+    border-radius: var(--radius-md);
+    transition: width 0.3s ease;
+}
+
+.budget-progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
 .success-toast {
   position: fixed;
   top: 80px;

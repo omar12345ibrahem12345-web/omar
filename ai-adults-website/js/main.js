@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     renderSeniorTable();
     updateSeniorStats();
     updateDeductionStats();
+    initRecruitingStats();
+    renderOpenPositionsTable();
+    renderJobBudgetTable();
+    renderProjectBudgetTable();
+    updateBudgetSummary();
 });
 
 // Mobile Menu Toggle
@@ -196,6 +201,13 @@ function loadDataFromStorage() {
             { metric: 'Employee Satisfaction', value: '4.2/5', change: '+0.4 improvement', direction: 'up' },
             { metric: 'Turnover Rate', value: '7.1%', change: '+1.2% vs Q1', direction: 'down' },
             { metric: 'Training Hours (YTD)', value: '1,240', change: '+180 this quarter', direction: 'up' }
+        ]);
+    }
+    if (!getData('seniors') || getData('seniors').length === 0) {
+        setData('seniors', [
+            { id: 101, name: 'Victor Montoya', email: 'v.montoya@prestige.com', department: 'VP Sales', salary: 180000, deductions: { incomeTax: 36000, socialSecurity: 13770, medicare: 2610, healthInsurance: 450, retirement401k: 7200, custom: 0 }, initials: 'VM' },
+            { id: 102, name: 'Diana Wallace', email: 'd.wallace@prestige.com', department: 'VP Marketing', salary: 165000, deductions: { incomeTax: 33000, socialSecurity: 12622.50, medicare: 2392.50, healthInsurance: 450, retirement401k: 6600, custom: 0 }, initials: 'DW' },
+            { id: 103, name: 'Richard Chang', email: 'r.chang@prestige.com', department: 'VP Finance', salary: 175000, deductions: { incomeTax: 35000, socialSecurity: 13492.50, medicare: 2537.50, healthInsurance: 450, retirement401k: 7000, custom: 0 }, initials: 'RC' }
         ]);
     }
 }
@@ -627,6 +639,346 @@ function updateDashboardStats() {
     document.querySelectorAll('[data-stat="totalEmployees"]').forEach(function(el) { el.textContent = employees.length; });
     document.querySelectorAll('[data-stat="activeEmployees"]').forEach(function(el) { el.textContent = activeCount; });
     document.querySelectorAll('[data-stat="totalPayroll"]').forEach(function(el) { el.textContent = '$' + (totalPayroll / 12).toLocaleString(undefined, {maximumFractionDigits:0}) + '/mo'; });
+}
+
+// ============================================
+// JOB & PROJECT BUDGETS (Budget page)
+// ============================================
+function renderJobBudgetTable() {
+    var tbody = document.querySelector('#jobBudgetBody');
+    if (!tbody) return;
+    var jobs = getData('jobBudgets', []);
+    var html = '';
+    jobs.forEach(function(j, i) {
+        var spentPct = j.allocated > 0 ? Math.round((j.spent / j.allocated) * 100) : 0;
+        var barColor = spentPct > 90 ? '#C53030' : spentPct > 70 ? '#D69E2E' : '#276749';
+        html += '<tr>' +
+            '<td><strong>' + j.title + '</strong></td>' +
+            '<td>' + j.department + '</td>' +
+            '<td>' + (j.headcount || 0) + '</td>' +
+            '<td><div class="salary-input-group"><span>$</span><span style="background:transparent;color:inherit;padding:0;border:none;font-weight:400;">' + j.allocated.toLocaleString() + '</span></div></td>' +
+            '<td><span class="deduction-amount">$' + j.spent.toLocaleString() + '</span></td>' +
+            '<td><div class="budget-progress"><div class="budget-progress-bar" style="width:' + Math.min(spentPct, 100) + '%;background:' + barColor + ';"></div><span class="budget-progress-label">' + spentPct + '%</span></div></td>' +
+            '<td>' + (j.notes || '') + '</td>' +
+            '<td class="action-cell">' +
+                '<button class="btn btn-sm btn-secondary" onclick="editJobBudget(' + i + ')">Edit</button> ' +
+                '<button class="btn btn-sm btn-danger" onclick="deleteJobBudget(' + i + ')">Delete</button>' +
+            '</td>' +
+            '</tr>';
+    });
+    if (!html) html = '<tr><td colspan="8" style="text-align:center;color:var(--color-text-muted);padding:var(--space-xl);">No job budgets added yet.</td></tr>';
+    tbody.innerHTML = html;
+}
+
+function handleAddJobBudget(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var jobs = getData('jobBudgets', []);
+    jobs.push({
+        title: fd.get('jobTitle'),
+        department: fd.get('jobDepartment'),
+        headcount: parseInt(fd.get('jobHeadcount')) || 0,
+        allocated: parseInt(fd.get('jobAllocated')) || 0,
+        spent: parseInt(fd.get('jobSpent')) || 0,
+        notes: fd.get('jobNotes') || ''
+    });
+    setData('jobBudgets', jobs);
+    form.reset();
+    showSuccess('Job budget for "' + jobs[jobs.length - 1].title + '" added!');
+    renderJobBudgetTable();
+    updateBudgetSummary();
+}
+
+function editJobBudget(index) {
+    var jobs = getData('jobBudgets', []);
+    var j = jobs[index];
+    if (!j) return;
+    var modal = document.getElementById('editJobBudgetModal');
+    if (!modal) return;
+    modal.querySelector('[name="editJobIndex"]').value = index;
+    modal.querySelector('[name="editJobTitle"]').value = j.title;
+    modal.querySelector('[name="editJobDepartment"]').value = j.department;
+    modal.querySelector('[name="editJobHeadcount"]').value = j.headcount;
+    modal.querySelector('[name="editJobAllocated"]').value = j.allocated;
+    modal.querySelector('[name="editJobSpent"]').value = j.spent;
+    modal.querySelector('[name="editJobNotes"]').value = j.notes || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function handleEditJobBudget(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var index = parseInt(fd.get('editJobIndex'));
+    var jobs = getData('jobBudgets', []);
+    if (!jobs[index]) return;
+    jobs[index].title = fd.get('editJobTitle');
+    jobs[index].department = fd.get('editJobDepartment');
+    jobs[index].headcount = parseInt(fd.get('editJobHeadcount')) || 0;
+    jobs[index].allocated = parseInt(fd.get('editJobAllocated')) || 0;
+    jobs[index].spent = parseInt(fd.get('editJobSpent')) || 0;
+    jobs[index].notes = fd.get('editJobNotes') || '';
+    setData('jobBudgets', jobs);
+    var overlay = form.closest('.modal-overlay');
+    if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    showSuccess('Job budget updated!');
+    renderJobBudgetTable();
+    updateBudgetSummary();
+}
+
+function deleteJobBudget(index) {
+    var jobs = getData('jobBudgets', []);
+    if (!jobs[index]) return;
+    if (!confirm('Delete budget for "' + jobs[index].title + '"?')) return;
+    jobs.splice(index, 1);
+    setData('jobBudgets', jobs);
+    showSuccess('Job budget removed.');
+    renderJobBudgetTable();
+    updateBudgetSummary();
+}
+
+function renderProjectBudgetTable() {
+    var tbody = document.querySelector('#projectBudgetBody');
+    if (!tbody) return;
+    var projects = getData('projectBudgets', []);
+    var html = '';
+    projects.forEach(function(p, i) {
+        var spentPct = p.budget > 0 ? Math.round((p.spent / p.budget) * 100) : 0;
+        var barColor = spentPct > 90 ? '#C53030' : spentPct > 70 ? '#D69E2E' : '#276749';
+        var statusClass = p.status === 'Active' ? 'badge-active' : p.status === 'Completed' ? 'badge-primary' : 'badge-pending';
+        html += '<tr>' +
+            '<td><strong>' + p.name + '</strong></td>' +
+            '<td>' + (p.type || 'General') + '</td>' +
+            '<td><div class="salary-input-group"><span>$</span><span style="background:transparent;color:inherit;padding:0;border:none;font-weight:400;">' + p.budget.toLocaleString() + '</span></div></td>' +
+            '<td><span class="deduction-amount">$' + p.spent.toLocaleString() + '</span></td>' +
+            '<td><div class="budget-progress"><div class="budget-progress-bar" style="width:' + Math.min(spentPct, 100) + '%;background:' + barColor + ';"></div><span class="budget-progress-label">' + spentPct + '%</span></div></td>' +
+            '<td><span class="badge ' + statusClass + '">' + p.status + '</span></td>' +
+            '<td class="action-cell">' +
+                '<button class="btn btn-sm btn-secondary" onclick="editProjectBudget(' + i + ')">Edit</button> ' +
+                '<button class="btn btn-sm btn-danger" onclick="deleteProjectBudget(' + i + ')">Delete</button>' +
+            '</td>' +
+            '</tr>';
+    });
+    if (!html) html = '<tr><td colspan="7" style="text-align:center;color:var(--color-text-muted);padding:var(--space-xl);">No project budgets added yet.</td></tr>';
+    tbody.innerHTML = html;
+}
+
+function handleAddProjectBudget(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var projects = getData('projectBudgets', []);
+    projects.push({
+        name: fd.get('projectName'),
+        type: fd.get('projectType'),
+        budget: parseInt(fd.get('projectBudget')) || 0,
+        spent: parseInt(fd.get('projectSpent')) || 0,
+        status: fd.get('projectStatus') || 'Active'
+    });
+    setData('projectBudgets', projects);
+    form.reset();
+    showSuccess('Project "' + projects[projects.length - 1].name + '" budget added!');
+    renderProjectBudgetTable();
+    updateBudgetSummary();
+}
+
+function editProjectBudget(index) {
+    var projects = getData('projectBudgets', []);
+    var p = projects[index];
+    if (!p) return;
+    var modal = document.getElementById('editProjectBudgetModal');
+    if (!modal) return;
+    modal.querySelector('[name="editProjectIndex"]').value = index;
+    modal.querySelector('[name="editProjectName"]').value = p.name;
+    modal.querySelector('[name="editProjectType"]').value = p.type;
+    modal.querySelector('[name="editProjectBudget"]').value = p.budget;
+    modal.querySelector('[name="editProjectSpent"]').value = p.spent;
+    modal.querySelector('[name="editProjectStatus"]').value = p.status;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function handleEditProjectBudget(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var index = parseInt(fd.get('editProjectIndex'));
+    var projects = getData('projectBudgets', []);
+    if (!projects[index]) return;
+    projects[index].name = fd.get('editProjectName');
+    projects[index].type = fd.get('editProjectType');
+    projects[index].budget = parseInt(fd.get('editProjectBudget')) || 0;
+    projects[index].spent = parseInt(fd.get('editProjectSpent')) || 0;
+    projects[index].status = fd.get('editProjectStatus');
+    setData('projectBudgets', projects);
+    var overlay = form.closest('.modal-overlay');
+    if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    showSuccess('Project budget updated!');
+    renderProjectBudgetTable();
+    updateBudgetSummary();
+}
+
+function deleteProjectBudget(index) {
+    var projects = getData('projectBudgets', []);
+    if (!projects[index]) return;
+    if (!confirm('Delete project "' + projects[index].name + '"?')) return;
+    projects.splice(index, 1);
+    setData('projectBudgets', projects);
+    showSuccess('Project budget removed.');
+    renderProjectBudgetTable();
+    updateBudgetSummary();
+}
+
+function updateBudgetSummary() {
+    var jobs = getData('jobBudgets', []);
+    var projects = getData('projectBudgets', []);
+    var jobAllocated = jobs.reduce(function(s, j) { return s + (j.allocated || 0); }, 0);
+    var jobSpent = jobs.reduce(function(s, j) { return s + (j.spent || 0); }, 0);
+    var projBudget = projects.reduce(function(s, p) { return s + (p.budget || 0); }, 0);
+    var projSpent = projects.reduce(function(s, p) { return s + (p.spent || 0); }, 0);
+    var el1 = document.getElementById('budgetTotalAllocated');
+    var el2 = document.getElementById('budgetTotalSpent');
+    var el3 = document.getElementById('budgetProjectTotal');
+    var el4 = document.getElementById('budgetProjectSpent');
+    if (el1) el1.textContent = '$' + jobAllocated.toLocaleString();
+    if (el2) el2.textContent = '$' + jobSpent.toLocaleString();
+    if (el3) el3.textContent = '$' + projBudget.toLocaleString();
+    if (el4) el4.textContent = '$' + projSpent.toLocaleString();
+}
+
+// ============================================
+// RECRUITING STATS
+// ============================================
+function initRecruitingStats() {
+    var form = document.getElementById('recruitingStatsForm');
+    if (!form) return;
+    var stats = getData('recruitingStats', { openPositions: 5, totalApplicants: 23, interviews: 8, offersPending: 2 });
+    form.querySelector('[name="statOpenPositions"]').value = stats.openPositions;
+    form.querySelector('[name="statTotalApplicants"]').value = stats.totalApplicants;
+    form.querySelector('[name="statInterviews"]').value = stats.interviews;
+    form.querySelector('[name="statOffersPending"]').value = stats.offersPending;
+    renderRecruitingStats(stats);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        var newStats = {
+            openPositions: parseInt(fd.get('statOpenPositions')) || 0,
+            totalApplicants: parseInt(fd.get('statTotalApplicants')) || 0,
+            interviews: parseInt(fd.get('statInterviews')) || 0,
+            offersPending: parseInt(fd.get('statOffersPending')) || 0
+        };
+        setData('recruitingStats', newStats);
+        renderRecruitingStats(newStats);
+        showSuccess('Recruiting stats updated!');
+    });
+}
+
+function renderRecruitingStats(stats) {
+    var el1 = document.getElementById('recruitingOpenPositions');
+    var el2 = document.getElementById('recruitingTotalApplicants');
+    var el3 = document.getElementById('recruitingInterviews');
+    var el4 = document.getElementById('recruitingOffersPending');
+    if (el1) el1.textContent = stats.openPositions;
+    if (el2) el2.textContent = stats.totalApplicants;
+    if (el3) el3.textContent = stats.interviews;
+    if (el4) el4.textContent = stats.offersPending;
+}
+
+// ============================================
+// OPEN POSITIONS TABLE (editable)
+// ============================================
+function renderOpenPositionsTable() {
+    var tbody = document.querySelector('#openPositionsBody');
+    if (!tbody) return;
+    var positions = getData('openPositions', []);
+    if (positions.length === 0) {
+        positions = [
+            { title: 'Senior Real Estate Agent', department: 'Sales', type: 'Full-time', posted: '5 days ago', applicants: 8 },
+            { title: 'Marketing Coordinator', department: 'Marketing', type: 'Full-time', posted: '1 week ago', applicants: 6 },
+            { title: 'Office Administrator', department: 'Admin', type: 'Full-time', posted: '2 weeks ago', applicants: 4 },
+            { title: 'Junior Agent Trainee', department: 'Sales', type: 'Full-time', posted: '3 days ago', applicants: 3 },
+            { title: 'Finance Analyst', department: 'Finance', type: 'Part-time', posted: '1 week ago', applicants: 2 }
+        ];
+        setData('openPositions', positions);
+    }
+    var html = '';
+    positions.forEach(function(p, i) {
+        html += '<tr>' +
+            '<td><strong>' + p.title + '</strong></td>' +
+            '<td>' + p.department + '</td>' +
+            '<td>' + p.type + '</td>' +
+            '<td>' + p.posted + '</td>' +
+            '<td>' + p.applicants + '</td>' +
+            '<td>' +
+                '<button class="btn btn-sm btn-secondary" onclick="editOpenPosition(' + i + ')">Edit</button> ' +
+                '<button class="btn btn-sm btn-danger" onclick="deleteOpenPosition(' + i + ')">Delete</button>' +
+            '</td>' +
+            '</tr>';
+    });
+    tbody.innerHTML = html;
+}
+
+function handleAddOpenPosition(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var positions = getData('openPositions', []);
+    positions.push({
+        title: fd.get('positionTitle'),
+        department: fd.get('positionDepartment'),
+        type: fd.get('positionType') || 'Full-time',
+        posted: 'Just now',
+        applicants: 0
+    });
+    setData('openPositions', positions);
+    form.reset();
+    showSuccess('Position "' + positions[positions.length - 1].title + '" posted!');
+    renderOpenPositionsTable();
+}
+
+function editOpenPosition(index) {
+    var positions = getData('openPositions', []);
+    var p = positions[index];
+    if (!p) return;
+    var modal = document.getElementById('editPositionModal');
+    if (!modal) return;
+    modal.querySelector('[name="editPositionIndex"]').value = index;
+    modal.querySelector('[name="editPositionTitle"]').value = p.title;
+    modal.querySelector('[name="editPositionDepartment"]').value = p.department;
+    modal.querySelector('[name="editPositionType"]').value = p.type;
+    modal.querySelector('[name="editPositionApplicants"]').value = p.applicants;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function handleEditOpenPosition(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var index = parseInt(fd.get('editPositionIndex'));
+    var positions = getData('openPositions', []);
+    if (!positions[index]) return;
+    positions[index].title = fd.get('editPositionTitle');
+    positions[index].department = fd.get('editPositionDepartment');
+    positions[index].type = fd.get('editPositionType');
+    positions[index].applicants = parseInt(fd.get('editPositionApplicants')) || 0;
+    setData('openPositions', positions);
+    var overlay = form.closest('.modal-overlay');
+    if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    showSuccess('Position updated!');
+    renderOpenPositionsTable();
+}
+
+function deleteOpenPosition(index) {
+    var positions = getData('openPositions', []);
+    if (!positions[index]) return;
+    if (!confirm('Remove position "' + positions[index].title + '"?')) return;
+    positions.splice(index, 1);
+    setData('openPositions', positions);
+    showSuccess('Position removed.');
+    renderOpenPositionsTable();
 }
 
 // ============================================
