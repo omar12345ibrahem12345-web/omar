@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore real-world AI applications across healthcare, finance, creative industries, science, education, and more. See how AI is transforming every sector.">
+    <meta name="theme-color" content="#3B82F6">
+    <title>Real-World AI Applications - AI for Adults</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" role="banner">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="AI for Adults - Home">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="32" height="32" rx="8" fill="url(#grad)"/>
+                    <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 12V20M12 16H20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#10B981"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>AI for Adults</span>
+            </a>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">What is AI?</a></li>
+                <li role="none"><a href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li role="none"><a href="types-of-ai.html" role="menuitem">Types of AI</a></li>
+                <li role="none"><a href="real-world-applications.html" class="active" role="menuitem" aria-current="page">Applications</a></li>
+                <li role="none"><a href="ethics-society.html" role="menuitem">Ethics & Society</a></li>
+                <li role="none"><a href="getting-started.html" role="menuitem">Getting Started</a></li>
+                <li role="none"><a href="future-of-ai.html" role="menuitem">Future of AI</a></li>
+            </ul>
+            <a href="getting-started.html" class="btn btn-primary nav-cta" role="menuitem">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-badge">Impact Across Industries</span>
+                    <h1 id="hero-title" class="hero-title">Real-World <span class="highlight">AI Applications</span></h1>
+                    <p class="hero-subtitle">From healthcare breakthroughs to creative tools—see how AI is transforming every industry and what it means for your work.</p>
+                    <div class="hero-actions">
+                        <a href="#industry-map" class="btn btn-primary btn-lg">Explore by Industry →</a>
+                        <a href="getting-started.html" class="btn btn-secondary btn-lg">Start Using AI</a>
+                    </div>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="appGrad" x1="0" y1="0" x2="500" y2="400">
+                                <stop stop-color="#3B82F6" stop-opacity="0.1"/>
+                                <stop offset="1" stop-color="#10B981" stop-opacity="0.1"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="400" rx="24" fill="url(#appGrad)"/>
+                        <!-- Industry icons grid -->
+                        <g transform="translate(60, 60)">
+                            <g class="industry-icon" transform="translate(0, 0)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#3B82F6">🏥</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Healthcare</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(100, 0)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#10B981">💰</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Finance</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(200, 0)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#7C2D12" stroke="#FBBF24" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#FBBF24">🎨</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Creative</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(300, 0)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#4C1D95" stroke="#A855F7" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#A855F7">🔬</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Science</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(0, 100)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#1E3A5F" stroke="#06B6D4" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#06B6D4">📚</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Education</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(100, 100)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#1F2937" stroke="#6B7280" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#6B7280">🏭</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Manufacturing</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(200, 100)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#78350F" stroke="#F97316" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#F97316">🚚</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Logistics</text>
+                            </g>
+                            <g class="industry-icon" transform="translate(300, 100)">
+                                <rect x="0" y="0" width="80" height="80" rx="16" fill="#450A0A" stroke="#EF4444" stroke-width="1.5"/>
+                                <text x="40" y="30" text-anchor="middle" font-family="Inter" font-size="24" fill="#EF4444">⚖️</text>
+                                <text x="40" y="58" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF">Legal</text>
+                            </g>
+                        </g>
+                        <!-- Connecting lines -->
+                        <g stroke="#374151" stroke-width="1" stroke-dasharray="4 4" opacity="0.3">
+                            <line x1="100" y1="100" x2="150" y2="150"/>
+                            <line x1="200" y1="100" x2="200" y2="150"/>
+                            <line x1="300" y1="100" x2="250" y2="150"/>
+                            <line x1="100" y1="100" x2="100" y2="200"/>
+                            <line x1="200" y1="100" x2="200" y2="200"/>
+                            <line x1="300" y1="100" x2="300" y2="200"/>
+                        </g>
+                        <!-- Central AI node -->
+                        <g transform="translate(200, 250)">
+                            <circle r="35" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+                            <text x="0" y="5" text-anchor="middle" font-family="Inter" font-size="28" fill="#3B82F6">🤖</text>
+                            <text x="0" y="30" text-anchor="middle" font-family="Inter" font-size="9" fill="#9CA3AF" font-weight="600">AI CORE</text>
+                        </g>
+                        <!-- Arrows from center to industries -->
+                        <g stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6">
+                            <path d="M200 235 Q150 200 100 100"/>
+                            <path d="M200 235 Q200 180 200 100"/>
+                            <path d="M200 235 Q250 200 300 100"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Map -->
+        <section id="industry-map" class="content-section" aria-labelledby="industry-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="industry-title" class="section-title">AI by <span class="highlight">Industry</span></h2>
+                    <p class="section-subtitle">Click any industry to explore specific use cases, tools, and impact.</p>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Healthcare -->
+                    <article class="card" style="border-left: 4px solid #3B82F6;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #1E3A5F, #1E40AF);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Healthcare & Life Sciences</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">AI is revolutionizing diagnosis, drug discovery, personalized treatment, and healthcare operations.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Medical imaging analysis (radiology, pathology)</li>
+                            <li style="margin-bottom: var(--space-xs);">Drug discovery & protein folding (AlphaFold)</li>
+                            <li style="margin-bottom: var(--space-xs);">Clinical trial optimization & patient matching</li>
+                            <li style="margin-bottom: var(--space-xs);">Personalized treatment planning</li>
+                            <li style="margin-bottom: var(--space-xs);">Administrative automation & cost reduction</li>
+                        </ul>
+                        <a href="applications-healthcare.html" class="card-link">Explore Healthcare AI →</a>
+                    </article>
+
+                    <!-- Finance -->
+                    <article class="card" style="border-left: 4px solid #10B981;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #064E3B, #059669);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Financial Services</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Fraud detection, algorithmic trading, risk assessment, and customer service automation.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Real-time fraud detection & AML</li>
+                            <li style="margin-bottom: var(--space-xs);">Algorithmic trading & portfolio optimization</li>
+                            <li style="margin-bottom: var(--space-xs);">Credit scoring & underwriting automation</li>
+                            <li style="margin-bottom: var(--space-xs);">Chatbots & robo-advisors for customer service</li>
+                            <li style="margin-bottom: var(--space-xs);">Regulatory compliance (RegTech)</li>
+                        </ul>
+                        <a href="applications-finance.html" class="card-link">Explore Finance AI →</a>
+                    </article>
+
+                    <!-- Creative & Media -->
+                    <article class="card" style="border-left: 4px solid #FBBF24;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #7C2D12, #F59E0B);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Creative Industries & Media</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Generative AI transforms content creation, design, video production, and marketing.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Image generation (Midjourney, DALL-E, Stable Diffusion)</li>
+                            <li style="margin-bottom: var(--space-xs);">Video creation & editing (Sora, Runway, Pika)</li>
+                            <li style="margin-bottom: var(--space-xs);">Music & audio generation (Suno, Udio, ElevenLabs)</li>
+                            <li style="margin-bottom: var(--space-xs);">Copywriting, marketing content, SEO</li>
+                            <li style="margin-bottom: var(--space-xs);">Game asset creation & procedural generation</li>
+                        </ul>
+                        <a href="applications-creative.html" class="card-link">Explore Creative AI →</a>
+                    </article>
+
+                    <!-- Software Development -->
+                    <article class="card" style="border-left: 4px solid #A855F7;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #4C1D95, #9333EA);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Software Development</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">AI coding assistants transform how developers write, review, test, and deploy code.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Code generation & completion (Copilot, Cursor, Codeium)</li>
+                            <li style="margin-bottom: var(--space-xs);">Automated testing & bug detection</li>
+                            <li style="margin-bottom: var(--space-xs);">Code review & security scanning</li>
+                            <li style="margin-bottom: var(--space-xs);">Documentation generation</li>
+                            <li style="margin-bottom: var(--space-xs);">Legacy code modernization & translation</li>
+                        </ul>
+                        <a href="applications-coding.html" class="card-link">Explore Coding AI →</a>
+                    </article>
+
+                    <!-- Science & Research -->
+                    <article class="card" style="border-left: 4px solid #06B6D4;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #164E63, #0891B2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Science & Research</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">AI accelerates discovery across physics, biology, chemistry, climate science, and materials.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Protein structure prediction (AlphaFold 3)</li>
+                            <li style="margin-bottom: var(--space-xs);">Materials discovery (GNoME, MatterGen)</li>
+                            <li style="margin-bottom: var(--space-xs);">Climate modeling & weather forecasting</li>
+                            <li style="margin-bottom: var(--space-xs);">Nuclear fusion control & plasma physics</li>
+                            <li style="margin-bottom: var(--space-xs);">Literature review & hypothesis generation</li>
+                        </ul>
+                        <a href="applications-science.html" class="card-link">Explore Science AI →</a>
+                    </article>
+
+                    <!-- Education -->
+                    <article class="card" style="border-left: 4px solid #F97316;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #7C2D12, #EA580C);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c3 3 9 3 12 0v-5"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Education & Learning</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Personalized tutoring, content creation, assessment, and accessibility at scale.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">AI tutors & personalized learning paths (Khanmigo)</li>
+                            <li style="margin-bottom: var(--space-xs);">Automated grading & feedback</li>
+                            <li style="margin-bottom: var(--space-xs);">Content generation & curriculum design</li>
+                            <li style="margin-bottom: var(--space-xs);">Language learning & translation</li>
+                            <li style="margin-bottom: var(--space-xs);">Accessibility tools (speech-to-text, text-to-speech)</li>
+                        </ul>
+                        <a href="applications-education.html" class="card-link">Explore Education AI →</a>
+                    </article>
+
+                    <!-- Manufacturing & Industry -->
+                    <article class="card" style="border-left: 4px solid #6B7280;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #1F2937, #4B5563);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Manufacturing & Industry 4.0</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Predictive maintenance, quality control, supply chain optimization, and digital twins.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Predictive maintenance (reduce downtime 30-50%)</li>
+                            <li style="margin-bottom: var(--space-xs);">Computer vision quality inspection</li>
+                            <li style="margin-bottom: var(--space-xs);">Digital twins for process optimization</li>
+                            <li style="margin-bottom: var(--space-xs);">Supply chain demand forecasting</li>
+                            <li style="margin-bottom: var(--space-xs);">Robotics & cobot collaboration</li>
+                        </ul>
+                        <a href="applications-manufacturing.html" class="card-link">Explore Manufacturing AI →</a>
+                    </article>
+
+                    <!-- Retail & E-commerce -->
+                    <article class="card" style="border-left: 4px solid #EC4899;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #831843, #DB2777);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Retail & E-commerce</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Recommendation engines, inventory optimization, visual search, and customer experience.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Personalized recommendations (35% of Amazon revenue)</li>
+                            <li style="margin-bottom: var(--space-xs);">Visual search & virtual try-on</li>
+                            <li style="margin-bottom: var(--space-xs);">Dynamic pricing & inventory optimization</li>
+                            <li style="margin-bottom: var(--space-xs);">Customer service chatbots & sentiment analysis</li>
+                            <li style="margin-bottom: var(--space-xs);">Demand forecasting & supply chain</li>
+                        </ul>
+                        <a href="applications-retail.html" class="card-link">Explore Retail AI →</a>
+                    </article>
+
+                    <!-- Legal & Professional Services -->
+                    <article class="card" style="border-left: 4px solid #EF4444;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #7F1D1D, #DC2626);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Legal & Professional Services</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Document review, contract analysis, legal research, and compliance automation.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Contract review & redlining (Harvey, Spellbook)</li>
+                            <li style="margin-bottom: var(--space-xs);">Legal research & case law analysis</li>
+                            <li style="margin-bottom: var(--space-xs);">E-discovery & document classification</li>
+                            <li style="margin-bottom: var(--space-xs);">Compliance monitoring & regulatory change tracking</li>
+                            <li style="margin-bottom: var(--space-xs);">Patent analysis & IP management</li>
+                        </ul>
+                        <a href="applications-legal.html" class="card-link">Explore Legal AI →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cross-Industry Use Cases -->
+        <section class="content-section alt" aria-labelledby="cross-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="cross-title" class="section-title">Cross-Industry <span class="highlight">AI Capabilities</span></h2>
+                    <p class="section-subtitle">These horizontal capabilities apply across virtually every sector.</p>
+                </div>
+
+                <div class="link-card-grid">
+                    <a href="getting-started.html#productivity" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #3B82F6, #10B981);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Productivity & Knowledge Work</h3>
+                            <p>Writing, summarization, analysis, meeting notes, email, scheduling—AI as universal assistant.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="getting-started.html#coding" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #A855F7, #EC4899);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Code Generation & DevOps</h3>
+                            <p>From autocomplete to autonomous agents—writing, testing, deploying, and maintaining software.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="getting-started.html#data-analysis" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #FBBF24, #F97316);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Data Analysis & BI</h3>
+                            <p>Natural language to SQL, automated insights, dashboard generation, predictive analytics.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="getting-started.html#customer-service" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #06B6D4, #3B82F6);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Customer Support & Chatbots</h3>
+                            <p>24/7 multilingual support, ticket routing, sentiment analysis, escalation handling.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="getting-started.html#marketing" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #8B5CF6, #D946EF);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Marketing & Content</h3>
+                            <p>Copywriting, SEO, social media, personalization, A/B testing, campaign optimization.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="ethics-society.html#hr" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #14B8A6, #06B6D4);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>HR & Recruiting</h3>
+                            <p>Resume screening, candidate matching, interview scheduling, onboarding, retention prediction.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="ethics-society.html#security" class="link-card" style="text-decoration: none; color: inherit;">
+                        <div class="link-card-icon" style="background: linear-gradient(135deg, #64748B, #3B82F6);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="link-card-content">
+                            <h3>Cybersecurity</h3>
+                            <p>Threat detection, anomaly detection, automated response, vulnerability scanning, phishing detection.</p>
+                        </div>
+                        <span class="link-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Metrics -->
+        <section class="content-section" aria-labelledby="impact-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="impact-title" class="section-title">Measured <span class="highlight">Business Impact</span></h2>
+                    <p class="section-subtitle">Real results from enterprise AI adoption (McKinsey, Deloitte, Stanford AI Index 2024).</p>
+                </div>
+                <div class="table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Industry</th>
+                                <th>Use Case</th>
+                                <th>Reported Impact</th>
+                                <th>Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Healthcare</td>
+                                <td>Medical imaging diagnosis</td>
+                                <td>90%+ accuracy; 30-50% faster radiology reads</td>
+                                <td>Nature Medicine, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Software</td>
+                                <td>Code generation (GitHub Copilot)</td>
+                                <td>55% faster coding; 88% developer retention</td>
+                                <td>GitHub/Microsoft, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Customer Service</td>
+                                <td>AI chatbots & agent assist</td>
+                                <td>30-50% cost reduction; 24/7 coverage</td>
+                                <td>McKinsey, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Manufacturing</td>
+                                <td>Predictive maintenance</td>
+                                <td>30-50% downtime reduction; 20-25% maintenance cost savings</td>
+                                <td>Deloitte, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Finance</td>
+                                <td>Fraud detection</td>
+                                <td>50-90% reduction in false positives</td>
+                                <td>Federal Reserve, 2023</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing</td>
+                                <td>Content generation & personalization</td>
+                                <td>2-5x content output; 10-20% conversion lift</td>
+                                <td>HubSpot/BCG, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Drug Discovery</td>
+                                <td>AI-designed molecules</td>
+                                <td>Years → months; $1B+ cost savings per drug</td>
+                                <td>Nature, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Logistics</td>
+                                <td>Route optimization & demand forecasting</td>
+                                <td>10-15% fuel savings; 20-30% inventory reduction</td>
+                                <td>McKinsey, 2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started CTA -->
+        <section class="content-section alt" style="text-align: center;" aria-labelledby="cta-title">
+            <div class="container">
+                <h2 id="cta-title" class="section-title">Ready to Apply AI in <span class="highlight">Your Work</span>?</h2>
+                <p class="section-subtitle" style="max-width: 600px; margin: 0 auto var(--space-xl);">Explore practical tools, learn prompting skills, and build your first AI workflow today.</p>
+                <div class="hero-actions" style="justify-content: center;">
+                    <a href="getting-started.html" class="btn btn-primary btn-lg">Get Started Guide →</a>
+                    <a href="resources.html" class="btn btn-secondary btn-lg">Browse Tools & Platforms</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Navigation -->
+        <nav class="page-nav container" aria-label="Page navigation">
+            <a href="types-of-ai.html" class="page-nav-link prev">← Previous: Types of AI</a>
+            <a href="ethics-society.html" class="page-nav-link next">Next: Ethics & Society →</a>
+        </nav>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color: var(--color-white);">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect width="32" height="32" rx="8" fill="url(#gradFooter)"/>
+                            <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 12V20M12 16H20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradFooter" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#3B82F6"/>
+                                    <stop offset="1" stop-color="#10B981"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>AI for Adults</span>
+                    </a>
+                    <p>Clear, practical guidance for understanding Artificial Intelligence—no hype, no jargon, just knowledge you can use.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                        <a href="#" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+                    </div>
+                </div>
+                <nav class="footer-col" aria-label="Learn">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="index.html">What is AI?</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="types-of-ai.html">Types of AI</a></li>
+                        <li><a href="real-world-applications.html">Applications</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Understand">
+                    <h4>Understand</h4>
+                    <ul>
+                        <li><a href="ethics-society.html">Ethics & Society</a></li>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="future-of-ai.html">Future of AI</a></li>
+                        <li><a href="glossary.html">Glossary</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Resources">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Tools & Platforms</a></li>
+                        <li><a href="courses.html">Courses & Certifications</a></li>
+                        <li><a href="books.html">Recommended Reading</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI for Adults. Built to make AI accessible to everyone.</p>
+                <nav aria-label="Legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="accessibility.html">Accessibility</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

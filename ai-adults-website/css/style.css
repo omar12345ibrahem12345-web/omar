@@ -4,27 +4,27 @@
    ============================================ */
 
 :root {
-  /* Colors - Professional adult palette */
-  --color-primary: #2563EB;
-  --color-primary-light: #3B82F6;
-  --color-primary-dark: #1D4ED8;
-  --color-secondary: #059669;
-  --color-secondary-light: #10B981;
-  --color-accent: #DC2626;
-  --color-accent-light: #EF4444;
-  --color-warm: #D97706;
-  --color-warm-light: #F59E0B;
-  --color-text: #111827;
-  --color-text-light: #6B7280;
-  --color-text-muted: #9CA3AF;
+  /* Colors - Dark professional palette with more black */
+  --color-primary: #3B82F6;
+  --color-primary-light: #60A5FA;
+  --color-primary-dark: #2563EB;
+  --color-secondary: #10B981;
+  --color-secondary-light: #34D399;
+  --color-accent: #F87171;
+  --color-accent-light: #FCA5A5;
+  --color-warm: #FBBF24;
+  --color-warm-light: #FCD34D;
+  --color-text: #F3F4F6;
+  --color-text-light: #9CA3AF;
+  --color-text-muted: #6B7280;
   --color-white: #FFFFFF;
-  --color-bg: #F9FAFB;
-  --color-bg-alt: #FFFFFF;
-  --color-bg-card: #FFFFFF;
-  --color-border: #E5E7EB;
-  --color-border-light: #F3F4F6;
-  --color-shadow: rgba(37, 99, 235, 0.08);
-  --color-shadow-strong: rgba(37, 99, 235, 0.15);
+  --color-bg: #030712;
+  --color-bg-alt: #0F172A;
+  --color-bg-card: #111827;
+  --color-border: #1F2937;
+  --color-border-light: #1E293B;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-shadow-strong: rgba(0, 0, 0, 0.6);
   
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -1119,13 +1119,14 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-white);
+    background: var(--color-bg-card);
     flex-direction: column;
     padding: var(--space-xl);
     gap: var(--space-md);
     transform: translateX(100%);
     transition: transform var(--transition-base);
     box-shadow: var(--shadow-xl);
+    border-left: 1px solid var(--color-border);
   }
   
   .nav-links.open {

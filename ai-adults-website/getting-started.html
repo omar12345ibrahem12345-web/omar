@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Start using AI today. Practical guide to tools, prompting, workflows, and first projects. From chatbots to coding assistants to local LLMs—everything you need to begin.">
+    <meta name="theme-color" content="#3B82F6">
+    <title>Getting Started with AI - AI for Adults</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" role="banner">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="AI for Adults - Home">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="32" height="32" rx="8" fill="url(#grad)"/>
+                    <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 12V20M12 16H20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#10B981"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>AI for Adults</span>
+            </a>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">What is AI?</a></li>
+                <li role="none"><a href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li role="none"><a href="types-of-ai.html" role="menuitem">Types of AI</a></li>
+                <li role="none"><a href="real-world-applications.html" role="menuitem">Applications</a></li>
+                <li role="none"><a href="ethics-society.html" role="menuitem">Ethics & Society</a></li>
+                <li role="none"><a href="getting-started.html" class="active" role="menuitem" aria-current="page">Getting Started</a></li>
+                <li role="none"><a href="future-of-ai.html" role="menuitem">Future of AI</a></li>
+            </ul>
+            <a href="getting-started.html" class="btn btn-primary nav-cta" role="menuitem">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-badge">Practical Guide</span>
+                    <h1 id="hero-title" class="hero-title">Getting Started with <span class="highlight">AI Today</span></h1>
+                    <p class="hero-subtitle">No PhD required. Pick the right tools, learn effective prompting, and build your first AI workflow in under an hour.</p>
+                    <div class="hero-actions">
+                        <a href="#quick-start" class="btn btn-primary btn-lg">Quick Start (5 min) →</a>
+                        <a href="#tools" class="btn btn-secondary btn-lg">Browse All Tools</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">50+</span>
+                            <span class="stat-label">Tools Reviewed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">10</span>
+                            <span class="stat-label">First Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">Free</span>
+                            <span class="stat-label">Tier Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="startGrad" x1="0" y1="0" x2="500" y2="400">
+                                <stop stop-color="#3B82F6" stop-opacity="0.1"/>
+                                <stop offset="1" stop-color="#10B981" stop-opacity="0.1"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="400" rx="24" fill="url(#startGrad)"/>
+                        <!-- Tool cards visualization -->
+                        <g transform="translate(50, 50)">
+                            <g class="tool-card" transform="translate(0, 0)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#3B82F6">💬</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Chat</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">GPT, Claude,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Gemini</text>
+                            </g>
+                            <g class="tool-card" transform="translate(140, 0)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#10B981">🎨</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Image</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Midjourney,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">DALL-E</text>
+                            </g>
+                            <g class="tool-card" transform="translate(280, 0)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#4C1D95" stroke="#A855F7" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#A855F7">💻</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Code</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Copilot,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Cursor</text>
+                            </g>
+                            <g class="tool-card" transform="translate(0, 110)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#7C2D12" stroke="#FBBF24" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#FBBF24">🔍</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Search</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Perplexity,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">You.com</text>
+                            </g>
+                            <g class="tool-card" transform="translate(140, 110)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#7F1D1D" stroke="#EF4444" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#EF4444">🎵</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Audio</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">ElevenLabs,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Suno</text>
+                            </g>
+                            <g class="tool-card" transform="translate(280, 110)">
+                                <rect x="0" y="0" width="120" height="90" rx="12" fill="#1F2937" stroke="#6B7280" stroke-width="1.5"/>
+                                <text x="60" y="28" text-anchor="middle" font-family="Inter" font-size="20" fill="#6B7280">🏠</text>
+                                <text x="60" y="52" text-anchor="middle" font-family="Inter" font-size="10" fill="#9CA3AF" font-weight="600">Local</text>
+                                <text x="60" y="68" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">Ollama,</text>
+                                <text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="8" fill="#6B7280">LM Studio</text>
+                            </g>
+                        </g>
+                        <!-- Arrow path -->
+                        <g stroke="#3B82F6" stroke-width="2" fill="none" opacity="0.5">
+                            <path d="M170 320 Q250 280 330 320" marker-end="url(#arrowStart)"/>
+                        </g>
+                        <defs>
+                            <marker id="arrowStart" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6"/>
+                            </marker>
+                        </defs>
+                        <!-- Result -->
+                        <g transform="translate(250, 340)">
+                            <circle r="30" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+                            <text x="0" y="10" text-anchor="middle" font-family="Inter" font-size="20" fill="#3B82F6">✨</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start -->
+        <section id="quick-start" class="content-section" aria-labelledby="quickstart-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="quickstart-title" class="section-title">Your 5-Minute <span class="highlight">Quick Start</span></h2>
+                    <p class="section-subtitle">Pick ONE path below. Do it now. Come back for the rest.</p>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card" style="border-left: 4px solid #3B82F6;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #1E3A5F, #1E40AF);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Path 1: Just Chat</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Easiest entry point. Try a frontier model conversation.</p>
+                        <ol style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Go to <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> or <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></li>
+                            <li style="margin-bottom: var(--space-xs);">Create free account</li>
+                            <li style="margin-bottom: var(--space-xs);">Paste this prompt: <code style="background: var(--color-bg-alt); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 0.8em;">"Act as a helpful assistant. I'm new to AI. Explain [topic I care about] simply, then give me 3 practical ways to use AI for it."</code></li>
+                            <li>Hit enter. Read. Follow up.</li>
+                        </ol>
+                        <a href="getting-started.html#chat" class="card-link">Detailed guide →</a>
+                    </article>
+
+                    <article class="card" style="border-left: 4px solid #10B981;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #064E3B, #059669);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Path 2: AI-Powered Search</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Replace Google for complex questions. Get synthesized answers with citations.</p>
+                        <ol style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Go to <a href="https://perplexity.ai" target="_blank" rel="noopener">perplexity.ai</a> (no account needed)</li>
+                            <li style="margin-bottom: var(--space-xs);">Ask: "What are the latest developments in [your field]?"</li>
+                            <li style="margin-bottom: var(--space-xs);">Click sources. Verify. Go deeper.</li>
+                        </ol>
+                        <a href="getting-started.html#search" class="card-link">Detailed guide →</a>
+                    </article>
+
+                    <article class="card" style="border-left: 4px solid #A855F7;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #4C1D95, #9333EA);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Path 3: Code Assistant</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">If you write any code, this is the highest-ROI starting point.</p>
+                        <ol style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Install <a href="https://codeium.com" target="_blank" rel="noopener">Codeium</a> (free) or <a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a> in VS Code</li>
+                            <li style="margin-bottom: var(--space-xs);">Open a project. Type a comment: <code style="background: var(--color-bg-alt); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 0.8em;">// function to parse CSV and return array of objects</code></li>
+                            <li style="margin-bottom: var(--space-xs);">Press Tab. Review. Edit. Learn.</li>
+                        </ol>
+                        <a href="getting-started.html#coding" class="card-link">Detailed guide →</a>
+                    </article>
+
+                    <article class="card" style="border-left: 4px solid #FBBF24;">
+                        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #7C2D12, #F59E0B);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            </div>
+                            <h3 style="margin: 0;">Path 4: Local LLMs (Private)</h3>
+                        </div>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Run models offline. No data leaves your machine. Free forever.</p>
+                        <ol style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);">Install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> (Mac/Windows/Linux)</li>
+                            <li style="margin-bottom: var(--space-xs);">Run: <code style="background: var(--color-bg-alt); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 0.8em;">ollama run llama3.2</code></li>
+                            <li style="margin-bottom: var(--space-xs);">Or try <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> for GUI + model browsing</li>
+                        </ol>
+                        <a href="getting-started.html#local-llms" class="card-link">Detailed guide →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Directory -->
+        <section id="tools" class="content-section alt" aria-labelledby="tools-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="tools-title" class="section-title">Essential <span class="highlight">AI Tools by Category</span></h2>
+                    <p class="section-subtitle">Curated selection. Free tiers noted. Start with one per category.</p>
+                </div>
+
+                <div class="accordion">
+                    <article class="accordion-item">
+                        <button class="accordion-header" aria-expanded="true" aria-controls="tools-chat">
+                            <span>💬 Chat & General Assistants</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="accordion-panel" id="tools-chat" role="region" style="max-height: 500px; padding: var(--space-lg); opacity: 1;">
+                            <div class="card-grid">
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">ChatGPT (OpenAI)</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Best all-rounder. GPT-4o free tier. Strong reasoning, coding, vision. <strong>Free tier:</strong> GPT-4o mini, limited GPT-4o.</p>
+                                    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Claude (Anthropic)</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Best for long context (200K), writing, analysis, coding. Less refusal. <strong>Free tier:</strong> Claude 3.5 Sonnet, generous limits.</p>
+                                    <a href="https://claude.ai" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Gemini (Google)</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Best for Google Workspace integration, 2M context, video understanding. <strong>Free tier:</strong> Gemini 1.5 Flash/Pro generous limits.</p>
+                                    <a href="https://gemini.google.com" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Perplexity</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">AI search with citations. Pro: Copilot mode, file upload, API access. <strong>Free tier:</strong> Unlimited quick searches.</p>
+                                    <a href="https://perplexity.ai" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="tools-code">
+                            <span>💻 Code & Development</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="accordion-panel" id="tools-code" role="region" hidden>
+                            <div class="card-grid">
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">GitHub Copilot</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">IDE autocomplete, chat, PR reviews. $10/mo. Free for students/teachers/OSS maintainers.</p>
+                                    <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Cursor</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">AI-first IDE (VS Code fork). Composer for multi-file edits. $20/mo. Free tier available.</p>
+                                    <a href="https://cursor.sh" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Codeium</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);"><strong>Free for individuals.</strong> Autocomplete, chat, command. 70+ languages. Best free alternative.</p>
+                                    <a href="https://codeium.com" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Cline / Roo Code</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Open-source autonomous coding agents in VS Code. Use any API key (local models too).</p>
+                                    <a href="https://github.com/cline/cline" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="tools-creative">
+                            <span>🎨 Creative: Image, Video, Audio</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="accordion-panel" id="tools-creative" role="region" hidden>
+                            <div class="card-grid">
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Midjourney</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Best artistic quality. Discord/Web. $10/mo. No free tier (trials occasionally).</p>
+                                    <a href="https://midjourney.com" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">DALL-E 3</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Via ChatGPT Plus ($20/mo) or API. Excellent prompt adherence. Free via Bing Image Creator.</p>
+                                    <a href="https://bing.com/images/create" target="_blank" rel="noopener" class="link-arrow">Free access →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Stable Diffusion (Local)</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);"><strong>Free, unlimited, private.</strong> ComfyUI, Automatic1111, Fooocus. Needs GPU (8GB+ VRAM).</p>
+                                    <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Video: Runway Gen-3, Luma, Kling, Sora</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Rapidly evolving. Runway ($12/mo), Luma (free tier), Kling (waitlist), Sora (limited access).</p>
+                                    <a href="https://runwayml.com" target="_blank" rel="noopener" class="link-arrow">Explore →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Audio: ElevenLabs, Suno, Udio</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">TTS (ElevenLabs), music generation (Suno, Udio). Generous free tiers.</p>
+                                    <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="link-arrow">Try TTS →</a>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="tools-productivity">
+                            <span>📋 Productivity & Knowledge</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="accordion-panel" id="tools-productivity" role="region" hidden>
+                            <div class="card-grid">
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Notion AI</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Writing, summarization, database autofill. $10/mo add-on.</p>
+                                    <a href="https://notion.so/product/ai" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Obsidian + Plugins</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Local-first PKM. Text Generator, Smart Connections plugins for local/remote LLMs.</p>
+                                    <a href="https://obsidian.md" target="_blank" rel="noopener" class="link-arrow">Get it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Readwise + Ghostreader</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Highlight management + AI summarization of articles, PDFs, tweets.</p>
+                                    <a href="https://readwise.io" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Granola / Fathom / Fireflies</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">AI meeting notes, transcripts, action items. Free tiers available.</p>
+                                    <a href="https://granola.so" target="_blank" rel="noopener" class="link-arrow">Try it →</a>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="tools-local">
+                            <span>🏠 Local LLMs (Privacy-First)</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="accordion-panel" id="tools-local" role="region" hidden>
+                            <div class="card-grid">
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Ollama</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">CLI-first. <code>ollama run llama3.2</code>. Model library. Mac/Win/Linux. <strong>Best for developers.</strong></p>
+                                    <a href="https://ollama.com" target="_blank" rel="noopener" class="link-arrow">Download →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">LM Studio</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">GUI. Model search/download (Hugging Face). Chat UI. OpenAI-compatible local server. <strong>Best for non-coders.</strong></p>
+                                    <a href="https://lmstudio.ai" target="_blank" rel="noopener" class="link-arrow">Download →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Jan / GPT4All</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);">Open-source alternatives. Jan = beautiful UI. GPT4All = one-click install, CPU-optimized.</p>
+                                    <a href="https://jan.ai" target="_blank" rel="noopener" class="link-arrow">Try Jan →</a>
+                                </article>
+                                <article class="card">
+                                    <h4 style="margin-bottom: var(--space-xs);">Models to Try</h4>
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-light); margin-bottom: var(--space-sm);"><strong>Llama 3.2 3B/1B</strong> (tiny, fast), <strong>Qwen2.5 7B/14B</strong> (best <14B), <strong>Phi-3.5 Mini</strong> (Microsoft, strong reasoning), <strong>Gemma 2 9B</strong> (Google).</p>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prompting Fundamentals -->
+        <section id="prompting" class="content-section" aria-labelledby="prompting-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="prompting-title" class="section-title">Prompting <span class="highlight">Fundamentals</span></h2>
+                    <p class="section-subtitle">The skill that compounds. Better prompts = exponentially better results.</p>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #1E3A5F, #1E40AF);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3>Core Structure: RACE</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">A memorable framework for every prompt:</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>R</strong>ole — "Act as a senior marketing strategist"</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>A</strong>ction — "Write a launch email sequence"</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>C</strong>ontext — "Product: AI course for developers. Audience: 2-5 yrs exp"</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>E</strong>xample/Expectation — "Tone: concise, practical. Format: 3 emails, <200 words each"</li>
+                        </ul>
+                        <div class="code-block" style="background: #1E293B; border-radius: var(--radius-md); padding: var(--space-md); overflow-x: auto; margin-top: var(--space-md);">
+                            <pre style="margin: 0; color: #E2E8F0; font-family: var(--font-family-mono); font-size: 0.8rem; line-height: 1.6;"><code><span style="color: #60A5FA;"># Before (weak)</span>
+"Write a marketing email for my AI course."
+
+<span style="color: #60A5FA;"># After (RACE)</span>
+<span style="color: #F472B6;">Role:</span> Senior B2B marketing strategist for developer tools
+<span style="color: #F472B6;">Action:</span> Write 3-email launch sequence for "AI for Developers" course
+<span style="color: #F472B6;">Context:</span> Target: 2-5 yr exp devs. Pain: overwhelmed by AI hype, want practical skills. Course: 4 weeks, hands-on, $299.
+<span style="color: #F472B6;">Expectation:</span> Tone: peer-to-peer, no fluff. Each email <200 words. Include one code snippet in email 2.
+</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #064E3B, #059669);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3>Advanced Techniques</h3>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Few-shot:</strong> Include 2-3 input/output examples</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Chain-of-thought:</strong> "Think step by step" or "Reason through this"</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Self-consistency:</strong> Run 3x, take majority vote (for factual Qs)</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Delimiters:</strong> Use <code style="background: var(--color-bg-alt); padding: 1px 4px; border-radius: var(--radius-sm);">### INPUT ###</code> / <code style="background: var(--color-bg-alt); padding: 1px 4px; border-radius: var(--radius-sm);">### OUTPUT ###</code></li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Negative constraints:</strong> "Do NOT use marketing jargon. No exclamation marks."</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Persona + Format:</strong> "Output as JSON matching this schema: {...}"</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #7C2D12, #F59E0B);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Common Pitfalls</h3>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                            <li style="margin-bottom: var(--space-xs);">🤷 Vague: "Make it better" → ✅ Specific: "Shorten by 30%, active voice, add metrics"</li>
+                            <li style="margin-bottom: var(--space-xs);">📝 Overloading: 5 tasks in one prompt → ✅ Decompose: Chain prompts</li>
+                            <li style="margin-bottom: var(--space-xs);">🎭 No role: Generic output → ✅ "Act as [expert] with 15 yrs exp in [field]"</li>
+                            <li style="margin-bottom: var(--space-xs);">🔒 No constraints: Hallucination risk → ✅ "Only use provided docs. Say 'unknown' if not found"</li>
+                            <li style="margin-bottom: var(--space-xs);">🔄 Single shot: "It didn't work" → ✅ Iterate: "Good, now make it more concise"</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #4C1D95, #9333EA);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                        </div>
+                        <h3>System Prompts (Reusable)</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Save these as custom instructions / system prompts:</p>
+                        <details style="margin-bottom: var(--space-sm);">
+                            <summary style="cursor: pointer; font-weight: var(--font-weight-medium); color: var(--color-text);">📝 General Assistant</summary>
+                            <pre style="background: #1E293B; padding: var(--space-sm); border-radius: var(--radius-md); margin-top: var(--space-xs); font-size: 0.75rem; overflow-x: auto;"><code>You are a helpful, concise, and knowledgeable assistant.
+- Be direct. No fluff, hedging, or unnecessary apologies.
+- If unsure, say so. Don't hallucinate.
+- Use formatting (bullets, code blocks, tables) for readability.
+- Ask clarifying questions when ambiguous.
+- Prioritize actionable, practical advice.</code></pre>
+                        </details>
+                        <details>
+                            <summary style="cursor: pointer; font-weight: var(--font-weight-medium); color: var(--color-text);">💻 Code Reviewer</summary>
+                            <pre style="background: #1E293B; padding: var(--space-sm); border-radius: var(--radius-md); margin-top: var(--space-xs); font-size: 0.75rem; overflow-x: auto;"><code>You are a senior software engineer doing code review.
+- Focus on: correctness, security, performance, maintainability
+- Be specific: file:line, suggest exact changes
+- Praise good patterns. Explain WHY for suggestions.
+- Consider context: legacy code, team conventions, constraints.
+- Output: Summary → Critical Issues → Suggestions → Nitpicks</code></pre>
+                        </details>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- First Projects -->
+        <section id="projects" class="content-section alt" aria-labelledby="projects-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="projects-title" class="section-title">Your First <span class="highlight">AI Projects</span></h2>
+                    <p class="section-subtitle">Weekend-scale projects. Pick one. Ship it. Learn by building.</p>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #1E3A5F, #1E40AF);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <h3>1. Personal Knowledge Assistant (RAG)</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Upload your PDFs/notes → ask questions → get cited answers.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> NotebookLM (free), AnythingLLM, Obsidian + plugins</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 30 min setup</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> Embeddings, vector search, RAG pipeline</li>
+                        </ul>
+                        <a href="getting-started.html#project-rag" class="card-link">Step-by-step →</a>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #064E3B, #059669);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>2. Automated Content Pipeline</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">RSS feed → AI summary → formatted LinkedIn/Twitter posts → schedule.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> n8n/Make/Zapier + OpenAI/Claude API + Buffer/Hootsuite</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 1-2 hours</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> API calls, prompt chaining, automation</li>
+                        </ul>
+                        <a href="getting-started.html#project-content" class="card-link">Step-by-step →</a>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #4C1D95, #9333EA);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 18 2 12 8 6"/></svg>
+                        </div>
+                        <h3>3. Code Migration Assistant</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Paste legacy code → get modernized version with tests + docs.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> Cursor/Claude/ChatGPT + your repo</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 1 hour per module</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> Large context, few-shot, verification</li>
+                        </ul>
+                        <a href="getting-started.html#project-code" class="card-link">Step-by-step →</a>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #7C2D12, #F59E0B);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        </div>
+                        <h3>4. Data Analysis Copilot</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">CSV → natural language questions → charts + insights + SQL.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> ChatGPT Advanced Data Analysis, Julius AI, or local (PandasAI)</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 30 min</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> Code execution, visualization, verification</li>
+                        </ul>
+                        <a href="getting-started.html#project-data" class="card-link">Step-by-step →</a>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #7F1D1D, #DC2626);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3>5. Meeting Intelligence</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Record → transcript → summary + action items + decisions → Notion/Linear.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> Granola (local), Fathom, Fireflies + Make/n8n</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 45 min setup</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> Speech-to-text, structured extraction, integration</li>
+                        </ul>
+                        <a href="getting-started.html#project-meetings" class="card-link">Step-by-step →</a>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #14B8A6, #06B6D4);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <h3>6. Custom GPT / Claude Project</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">Package your prompt + knowledge + instructions into a reusable assistant.</p>
+                        <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+                            <li style="margin-bottom: var(--space-xs);"><strong>Tools:</strong> ChatGPT GPTs, Claude Projects, Gemini Gems</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Time:</strong> 20 min</li>
+                            <li style="margin-bottom: var(--space-xs);"><strong>Learn:</strong> System prompts, file upload, sharing</li>
+                        </ul>
+                        <a href="getting-started.html#project-gpt" class="card-link">Step-by-step →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path -->
+        <section class="content-section" aria-labelledby="learning-title">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h2 id="learning-title" class="section-title">Structured <span class="highlight">Learning Path</span></h2>
+                    <p class="section-subtitle">From beginner to practitioner. Free resources prioritized.</p>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>Week 1: Foundations & Hands-On</h3>
+                            <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                                <li>Complete quick start paths above (2-3 hours total)</li>
+                                <li>Course: <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener" class="link-arrow">AI for Everyone (Andrew Ng, Coursera)</a> — free audit</li>
+                                <li>Read: <a href="https://arxiv.org/abs/2302.13442" target="_blank" rel="noopener" class="link-arrow">"A Survey of Large Language Models"</a> (skim)</li>
+                                <li>Build: Project 1 (RAG) or Project 6 (Custom GPT)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>Week 2: Prompting & Evaluation</h3>
+                            <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                                <li>Guide: <a href="https://promptingguide.ai" target="_blank" rel="noopener" class="link-arrow">Prompt Engineering Guide (DAIR.AI)</a></li>
+                                <li>Course: <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener" class="link-arrow">ChatGPT Prompt Engineering (DeepLearning.AI)</a> — free</li>
+                                <li>Practice: <a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener" class="link-arrow">Awesome ChatGPT Prompts</a> — copy, modify, test</li>
+                                <li>Build: Project 2 (Content Pipeline) or Project 4 (Data Analysis)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>Week 3: Technical Depth</h3>
+                            <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                                <li>Course: <a href="https://www.coursera.org/specializations/generative-ai-llm" target="_blank" rel="noopener" class="link-arrow">Generative AI with LLMs (DeepLearning.AI)</a></li>
+                                <li>Read: <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener" class="link-arrow">"Language Models are Few-Shot Learners" (GPT-3 paper)</a></li>
+                                <li>Hands-on: <a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener" class="link-arrow">Hugging Face Transformers tutorials</a></li>
+                                <li>Build: Project 3 (Code Migration) or local LLM setup</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>Week 4: Specialization & Portfolio</h3>
+                            <ul style="padding-left: var(--space-lg); color: var(--color-text-light); font-size: var(--font-size-sm);">
+                                <li>Pick a track: RAG/Agents, Fine-tuning, MLOps, AI Product, Research</li>
+                                <li>Course: <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener" class="link-arrow">DeepLearning.AI Short Courses</a> (many free, 1-2 hrs each)</li>
+                                <li>Build a portfolio project. Document on GitHub + blog post.</li>
+                                <li>Join communities: <a href="https://discord.gg/huggingface" target="_blank" rel="noopener" class="link-arrow">HF Discord</a>, <a href="https://www.reddit.com/r/LocalLLaMA/" target="_blank" rel="noopener" class="link-arrow">r/LocalLLaMA</a>, <a href="https://twitter.com/i/communities" target="_blank" rel="noopener" class="link-arrow">X AI Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Navigation -->
+        <nav class="page-nav container" aria-label="Page navigation">
+            <a href="ethics-society.html" class="page-nav-link prev">← Previous: Ethics & Society</a>
+            <a href="future-of-ai.html" class="page-nav-link next">Next: Future of AI →</a>
+        </nav>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color: var(--color-white);">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect width="32" height="32" rx="8" fill="url(#gradFooter)"/>
+                            <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 12V20M12 16H20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradFooter" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#3B82F6"/>
+                                    <stop offset="1" stop-color="#10B981"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>AI for Adults</span>
+                    </a>
+                    <p>Clear, practical guidance for understanding Artificial Intelligence—no hype, no jargon, just knowledge you can use.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                        <a href="#" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+                    </div>
+                </div>
+                <nav class="footer-col" aria-label="Learn">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="index.html">What is AI?</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="types-of-ai.html">Types of AI</a></li>
+                        <li><a href="real-world-applications.html">Applications</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Understand">
+                    <h4>Understand</h4>
+                    <ul>
+                        <li><a href="ethics-society.html">Ethics & Society</a></li>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="future-of-ai.html">Future of AI</a></li>
+                        <li><a href="glossary.html">Glossary</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Resources">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Tools & Platforms</a></li>
+                        <li><a href="courses.html">Courses & Certifications</a></li>
+                        <li><a href="books.html">Recommended Reading</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI for Adults. Built to make AI accessible to everyone.</p>
+                <nav aria-label="Legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="accessibility.html">Accessibility</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
