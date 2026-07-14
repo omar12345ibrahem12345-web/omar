@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderJobBudgetTable();
     renderProjectBudgetTable();
     updateBudgetSummary();
+    renderEmployeeIdTable();
 });
 
 // Mobile Menu Toggle
@@ -208,6 +209,15 @@ function loadDataFromStorage() {
             { id: 101, name: 'Victor Montoya', email: 'v.montoya@prestige.com', department: 'VP Sales', salary: 180000, deductions: { incomeTax: 36000, socialSecurity: 13770, medicare: 2610, healthInsurance: 450, retirement401k: 7200, custom: 0 }, initials: 'VM' },
             { id: 102, name: 'Diana Wallace', email: 'd.wallace@prestige.com', department: 'VP Marketing', salary: 165000, deductions: { incomeTax: 33000, socialSecurity: 12622.50, medicare: 2392.50, healthInsurance: 450, retirement401k: 6600, custom: 0 }, initials: 'DW' },
             { id: 103, name: 'Richard Chang', email: 'r.chang@prestige.com', department: 'VP Finance', salary: 175000, deductions: { incomeTax: 35000, socialSecurity: 13492.50, medicare: 2537.50, healthInsurance: 450, retirement401k: 7000, custom: 0 }, initials: 'RC' }
+        ]);
+    }
+    if (!getData('employeeIds') || getData('employeeIds').length === 0) {
+        setData('employeeIds', [
+            { name: 'James Rodriguez', email: 'j.rodriguez@prestige.com', department: 'Sales', ssn: '123-45-6789', dateOfBirth: '1988-03-15', phone: '(310) 555-0101', photo: '', initials: 'JR', avatarClass: 'avatar-blue' },
+            { name: 'Emily Chen', email: 'e.chen@prestige.com', department: 'Sales', ssn: '234-56-7890', dateOfBirth: '1992-07-22', phone: '(310) 555-0102', photo: '', initials: 'EC', avatarClass: 'avatar-green' },
+            { name: 'Michael Torres', email: 'm.torres@prestige.com', department: 'Sales', ssn: '345-67-8901', dateOfBirth: '1985-11-08', phone: '(310) 555-0103', photo: '', initials: 'MT', avatarClass: 'avatar-purple' },
+            { name: 'Amanda Foster', email: 'a.foster@prestige.com', department: 'Admin', ssn: '456-78-9012', dateOfBirth: '1990-01-30', phone: '(310) 555-0104', photo: '', initials: 'AF', avatarClass: 'avatar-pink' },
+            { name: 'Nancy Johnson', email: 'n.johnson@prestige.com', department: 'Legal', ssn: '567-89-0123', dateOfBirth: '1982-09-12', phone: '(310) 555-0105', photo: '', initials: 'NJ', avatarClass: 'avatar-gold' }
         ]);
     }
 }
@@ -846,6 +856,194 @@ function updateBudgetSummary() {
     if (el2) el2.textContent = '$' + jobSpent.toLocaleString();
     if (el3) el3.textContent = '$' + projBudget.toLocaleString();
     if (el4) el4.textContent = '$' + projSpent.toLocaleString();
+}
+
+// ============================================
+// EMPLOYEE PHOTOS & SSN (Employees ID page)
+// ============================================
+function renderEmployeeIdTable() {
+    var tbody = document.querySelector('#employeeIdBody');
+    if (!tbody) return;
+    var employees = getData('employeeIds', []);
+    var html = '';
+    employees.forEach(function(emp, i) {
+        var photoHtml = emp.photo
+            ? '<img src="' + emp.photo + '" alt="' + emp.name + '" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--color-secondary);">'
+            : '<div class="employee-avatar ' + (emp.avatarClass || 'avatar-blue') + '" style="width:44px;height:44px;font-size:14px;">' + (emp.initials || '??') + '</div>';
+        var ssnDisplay = emp.ssn ? '***-**-' + emp.ssn.slice(-4) : '---';
+        html += '<tr>' +
+            '<td>' + photoHtml + '</td>' +
+            '<td><strong>' + emp.name + '</strong><br><span style="color:var(--color-text-muted);font-size:12px;">' + (emp.email || '') + '</span></td>' +
+            '<td>' + (emp.department || '') + '</td>' +
+            '<td><code style="background:#EDF2F7;padding:4px 8px;border-radius:4px;font-size:13px;letter-spacing:1px;">' + ssnDisplay + '</code></td>' +
+            '<td>' + (emp.dateOfBirth || '---') + '</td>' +
+            '<td class="action-cell">' +
+                '<button class="btn btn-sm btn-secondary" onclick="viewEmployeeSSN(' + i + ')">View SSN</button> ' +
+                '<button class="btn btn-sm btn-secondary" onclick="editEmployeeId(' + i + ')">Edit</button> ' +
+                '<button class="btn btn-sm btn-danger" onclick="deleteEmployeeId(' + i + ')">Delete</button>' +
+            '</td>' +
+            '</tr>';
+    });
+    if (!html) html = '<tr><td colspan="6" style="text-align:center;color:var(--color-text-muted);padding:var(--space-xl);">No employee records yet. Add one above.</td></tr>';
+    tbody.innerHTML = html;
+}
+
+function handleAddEmployeeId(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var name = fd.get('empName');
+    if (!name) return;
+    var photoFile = fd.get('empPhoto');
+    var initials = name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().substring(0, 2);
+    var colors = ['avatar-blue','avatar-green','avatar-purple','avatar-pink','avatar-gold','avatar-red'];
+    var employees = getData('employeeIds', []);
+    var newEmp = {
+        name: name,
+        email: fd.get('empEmail') || '',
+        department: fd.get('empDepartment') || '',
+        ssn: fd.get('empSSN') || '',
+        dateOfBirth: fd.get('empDOB') || '',
+        phone: fd.get('empPhone') || '',
+        photo: '',
+        initials: initials,
+        avatarClass: colors[employees.length % colors.length]
+    };
+    if (photoFile && photoFile.size > 0) {
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+            newEmp.photo = ev.target.result;
+            employees.push(newEmp);
+            setData('employeeIds', employees);
+            form.reset();
+            document.getElementById('photoPreview').style.display = 'none';
+            showSuccess(name + ' added with photo!');
+            renderEmployeeIdTable();
+        };
+        reader.readAsDataURL(photoFile);
+    } else {
+        employees.push(newEmp);
+        setData('employeeIds', employees);
+        form.reset();
+        showSuccess(name + ' added!');
+        renderEmployeeIdTable();
+    }
+}
+
+function editEmployeeId(index) {
+    var employees = getData('employeeIds', []);
+    var emp = employees[index];
+    if (!emp) return;
+    var modal = document.getElementById('editEmployeeIdModal');
+    if (!modal) return;
+    modal.querySelector('[name="editEmpIdIndex"]').value = index;
+    modal.querySelector('[name="editEmpName"]').value = emp.name;
+    modal.querySelector('[name="editEmpEmail"]').value = emp.email || '';
+    modal.querySelector('[name="editEmpDepartment"]').value = emp.department || '';
+    modal.querySelector('[name="editEmpSSN"]').value = emp.ssn || '';
+    modal.querySelector('[name="editEmpDOB"]').value = emp.dateOfBirth || '';
+    modal.querySelector('[name="editEmpPhone"]').value = emp.phone || '';
+    var preview = modal.querySelector('#editPhotoPreview');
+    if (preview) {
+        if (emp.photo) {
+            preview.src = emp.photo;
+            preview.style.display = 'block';
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function handleEditEmployeeId(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var index = parseInt(fd.get('editEmpIdIndex'));
+    var employees = getData('employeeIds', []);
+    if (!employees[index]) return;
+    var photoFile = fd.get('editEmpPhoto');
+    var updateFn = function() {
+        employees[index].name = fd.get('editEmpName');
+        employees[index].email = fd.get('editEmpEmail');
+        employees[index].department = fd.get('editEmpDepartment');
+        employees[index].ssn = fd.get('editEmpSSN');
+        employees[index].dateOfBirth = fd.get('editEmpDOB');
+        employees[index].phone = fd.get('editEmpPhone');
+        employees[index].initials = employees[index].name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().substring(0, 2);
+        setData('employeeIds', employees);
+        var overlay = form.closest('.modal-overlay');
+        if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        showSuccess(employees[index].name + ' updated!');
+        renderEmployeeIdTable();
+    };
+    if (photoFile && photoFile.size > 0) {
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+            employees[index].photo = ev.target.result;
+            updateFn();
+        };
+        reader.readAsDataURL(photoFile);
+    } else {
+        updateFn();
+    }
+}
+
+function deleteEmployeeId(index) {
+    var employees = getData('employeeIds', []);
+    if (!employees[index]) return;
+    if (!confirm('Delete record for "' + employees[index].name + '"?')) return;
+    employees.splice(index, 1);
+    setData('employeeIds', employees);
+    showSuccess('Employee record deleted.');
+    renderEmployeeIdTable();
+}
+
+function viewEmployeeSSN(index) {
+    var employees = getData('employeeIds', []);
+    var emp = employees[index];
+    if (!emp) return;
+    var modal = document.getElementById('viewSSNModal');
+    if (!modal) return;
+    var photoEl = modal.querySelector('#viewSSNPhoto');
+    var nameEl = modal.querySelector('#viewSSNName');
+    var deptEl = modal.querySelector('#viewSSNDept');
+    var ssnEl = modal.querySelector('#viewSSNNumber');
+    var dobEl = modal.querySelector('#viewSSNDOB');
+    var phoneEl = modal.querySelector('#viewSSNPhone');
+    var emailEl = modal.querySelector('#viewSSNEmail');
+    if (photoEl) {
+        if (emp.photo) {
+            photoEl.src = emp.photo;
+            photoEl.style.display = 'block';
+        } else {
+            photoEl.style.display = 'none';
+        }
+    }
+    if (nameEl) nameEl.textContent = emp.name;
+    if (deptEl) deptEl.textContent = emp.department || 'N/A';
+    if (ssnEl) ssnEl.textContent = emp.ssn || 'Not provided';
+    if (dobEl) dobEl.textContent = emp.dateOfBirth || 'Not provided';
+    if (phoneEl) phoneEl.textContent = emp.phone || 'Not provided';
+    if (emailEl) emailEl.textContent = emp.email || 'Not provided';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function previewPhoto(input, previewId) {
+    var preview = document.getElementById(previewId);
+    if (!preview) return;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.style.display = 'none';
+    }
 }
 
 // ============================================
