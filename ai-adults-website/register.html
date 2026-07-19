@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Prestige Realty HR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <svg width="60" height="60" viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="8" fill="#C9A84C"/>
+                    <path d="M10 26V12l8-4 8 4v14" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 26V18h8v8" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join Prestige Realty HR</p>
+
+            <div id="registerError" class="auth-error" style="display:none;"></div>
+            <div id="registerSuccess" class="auth-success" style="display:none;"></div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" class="form-input" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="Min. 6 characters" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="registerPasswordConfirm">Confirm Password</label>
+                    <input type="password" id="registerPasswordConfirm" class="form-input" placeholder="Re-enter password" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg auth-btn" id="registerBtn">
+                    Create Account
+                </button>
+            </form>
+
+            <p class="auth-footer">
+                Already have an account? <a href="login.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+    // Redirect if already logged in
+    if (window.supabaseClient) {
+        window.supabaseClient.auth.getSession().then(function(result) {
+            if (result.data.session) {
+                window.location.href = 'index.html';
+            }
+        });
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var name = document.getElementById('registerName').value;
+        var email = document.getElementById('registerEmail').value;
+        var password = document.getElementById('registerPassword').value;
+        var passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+        var btn = document.getElementById('registerBtn');
+        var errorDiv = document.getElementById('registerError');
+        var successDiv = document.getElementById('registerSuccess');
+
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+
+        if (password !== passwordConfirm) {
+            errorDiv.textContent = 'Passwords do not match.';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        btn.textContent = 'Creating account...';
+        btn.disabled = true;
+
+        var result = await handleRegister(email, password, name);
+
+        if (result.error) {
+            errorDiv.textContent = result.error.message;
+            errorDiv.style.display = 'block';
+            btn.textContent = 'Create Account';
+            btn.disabled = false;
+        } else {
+            if (result.data.user && result.data.user.identities && result.data.user.identities.length === 0) {
+                errorDiv.textContent = 'An account with this email already exists.';
+                errorDiv.style.display = 'block';
+                btn.textContent = 'Create Account';
+                btn.disabled = false;
+            } else {
+                successDiv.textContent = 'Account created! Redirecting to dashboard...';
+                successDiv.style.display = 'block';
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        }
+    });
+    </script>
+</body>
+</html>
