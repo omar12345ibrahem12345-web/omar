@@ -1,4 +1,4 @@
-// Auth Helper Functions
+// Auth Helper Functions - Server-side auth via API
 // ============================================
 
 function isAuthPage() {
@@ -6,37 +6,22 @@ function isAuthPage() {
     return path.endsWith('login.html') || path.endsWith('register.html');
 }
 
-function getSupabaseAuthClient() {
-    if (!window.supabaseClient) {
-        showAuthSetupError();
-        return null;
-    }
-    return window.supabaseClient;
-}
-
-function showAuthSetupError() {
-    var errorDiv = document.querySelector('.auth-error');
-    if (errorDiv) {
-        errorDiv.textContent = 'Supabase is not configured. Check js/supabase-client.js.';
-        errorDiv.style.display = 'block';
-    }
-}
-
-// Protect page - redirect to login if not authenticated
 function protectPage() {
     if (isAuthPage()) return;
-    var client = getSupabaseAuthClient();
-    if (!client) return;
-    client.auth.getSession().then(function(result) {
-        if (!result.data.session) {
+    fetch('/api/auth/session', { credentials: 'same-origin' })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (!data.session || !data.user) {
+                window.location.href = 'login.html';
+            } else {
+                displayUserInfo(data.user);
+            }
+        })
+        .catch(function() {
             window.location.href = 'login.html';
-        } else {
-            displayUserInfo(result.data.session.user);
-        }
-    });
+        });
 }
 
-// Display user info in the header
 function displayUserInfo(user) {
     var avatarEls = document.querySelectorAll('.user-avatar');
     var name = user.user_metadata && user.user_metadata.full_name
@@ -49,36 +34,46 @@ function displayUserInfo(user) {
     });
 }
 
-// Login
 async function handleLogin(email, password) {
-    var client = getSupabaseAuthClient();
-    if (!client) return { error: { message: 'Supabase is not configured.' } };
-    var result = await client.auth.signInWithPassword({ email: email, password: password });
-    return result;
+    try {
+        var res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ email: email, password: password })
+        });
+        var data = await res.json();
+        if (!res.ok) return { error: { message: data.error } };
+        return { data: data };
+    } catch (err) {
+        return { error: { message: err.message } };
+    }
 }
 
-// Register
 async function handleRegister(email, password, fullName) {
-    var client = getSupabaseAuthClient();
-    if (!client) return { error: { message: 'Supabase is not configured.' } };
-    var result = await client.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-            data: { full_name: fullName }
-        }
-    });
-    return result;
+    try {
+        var res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ email: email, password: password, fullName: fullName })
+        });
+        var data = await res.json();
+        if (!res.ok) return { error: { message: data.error } };
+        return { data: data };
+    } catch (err) {
+        return { error: { message: err.message } };
+    }
 }
 
-// Logout
 async function handleLogout() {
-    var client = getSupabaseAuthClient();
-    if (client) await client.auth.signOut();
+    await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'same-origin'
+    });
     window.location.href = 'login.html';
 }
 
-// Add logout button to header on all protected pages
 function addLogoutButton() {
     if (isAuthPage()) return;
     var headerActions = document.querySelector('.header-actions');
@@ -95,25 +90,23 @@ function addLogoutButton() {
     headerActions.appendChild(logoutBtn);
 }
 
-// Update welcome message with user name
 function updateWelcomeMessage() {
-    var client = getSupabaseAuthClient();
-    if (!client) return;
-    client.auth.getSession().then(function(result) {
-        if (result.data.session) {
-            var user = result.data.session.user;
-            var name = user.user_metadata && user.user_metadata.full_name
-                ? user.user_metadata.full_name
-                : user.email.split('@')[0];
-            var heroTitle = document.querySelector('.page-hero h1');
-            if (heroTitle) {
-                heroTitle.textContent = 'Welcome back, ' + name;
+    fetch('/api/auth/session', { credentials: 'same-origin' })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.user) {
+                var name = data.user.user_metadata && data.user.user_metadata.full_name
+                    ? data.user.user_metadata.full_name
+                    : data.user.email.split('@')[0];
+                var heroTitle = document.querySelector('.page-hero h1');
+                if (heroTitle) {
+                    heroTitle.textContent = 'Welcome back, ' + name;
+                }
             }
-        }
-    });
+        })
+        .catch(function() {});
 }
 
-// Init auth on page load
 document.addEventListener('DOMContentLoaded', function() {
     protectPage();
     addLogoutButton();

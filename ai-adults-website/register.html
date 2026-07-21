@@ -53,18 +53,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
     <script src="js/auth.js"></script>
     <script>
-    // Redirect if already logged in
-    if (window.supabaseClient) {
-        window.supabaseClient.auth.getSession().then(function(result) {
-            if (result.data.session) {
-                window.location.href = 'index.html';
-            }
-        });
-    }
+    fetch('/api/auth/session', { credentials: 'same-origin' })
+        .then(function(r) { return r.json(); })
+        .then(function(data) { if (data.session) window.location.href = 'index.html'; });
 
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -96,18 +89,11 @@
             btn.textContent = 'Create Account';
             btn.disabled = false;
         } else {
-            if (result.data.user && result.data.user.identities && result.data.user.identities.length === 0) {
-                errorDiv.textContent = 'An account with this email already exists.';
-                errorDiv.style.display = 'block';
-                btn.textContent = 'Create Account';
-                btn.disabled = false;
-            } else {
-                successDiv.textContent = 'Account created! Redirecting to dashboard...';
-                successDiv.style.display = 'block';
-                setTimeout(function() {
-                    window.location.href = 'index.html';
-                }, 1500);
-            }
+            successDiv.textContent = 'Account created! Redirecting to dashboard...';
+            successDiv.style.display = 'block';
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 1500);
         }
     });
     </script>

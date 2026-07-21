@@ -77,10 +77,13 @@
                         <input type="text" placeholder="Search applicants...">
                     </div>
                     <div class="header-actions">
-                        <button class="header-btn" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            <span class="notification-dot"></span>
-                        </button>
+                        <div class="notification-wrapper">
+                            <button class="header-btn" aria-label="Notifications" id="notificationBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                <span class="notification-dot" id="notificationDot" style="display:none;"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown"></div>
+                        </div>
                         <div class="user-avatar">SM</div>
                     </div>
                 </div>
@@ -92,39 +95,7 @@
                     <p>Manage open positions and track applicants through your hiring pipeline. Add new applicants and update their status.</p>
                 </div>
 
-                <!-- Editable Recruiting Stats -->
-                <div class="data-entry-section">
-                    <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                        Recruiting Overview (Edit Values)
-                    </h3>
-                    <form id="recruitingStatsForm">
-                        <div class="mini-form">
-                            <div class="form-group">
-                                <label>Open Positions</label>
-                                <input type="number" name="statOpenPositions" class="form-input" min="0" placeholder="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Total Applicants</label>
-                                <input type="number" name="statTotalApplicants" class="form-input" min="0" placeholder="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Interviews Scheduled</label>
-                                <input type="number" name="statInterviews" class="form-input" min="0" placeholder="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Offers Pending</label>
-                                <input type="number" name="statOffersPending" class="form-input" min="0" placeholder="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label>&nbsp;</label>
-                                <button type="submit" class="btn btn-primary">Save Stats</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Stats Display -->
+                <!-- Stats Display (Auto-calculated from actual data) -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon blue">
@@ -177,8 +148,29 @@
                                 <input type="text" name="applicantName" class="form-input" placeholder="Applicant name" required>
                             </div>
                             <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="applicantEmail" class="form-input" placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" name="applicantPhone" class="form-input" placeholder="(555) 123-4567">
+                            </div>
+                            <div class="form-group">
                                 <label>Position Applied For</label>
                                 <input type="text" name="applicantPosition" class="form-input" placeholder="e.g. Senior Agent" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="applicantStatus" class="form-input">
+                                    <option value="New">New</option>
+                                    <option value="Under Review">Under Review</option>
+                                    <option value="Interview Scheduled">Interview Scheduled</option>
+                                    <option value="Offer Sent">Offer Sent</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Experience (years)</label>
+                                <input type="number" name="applicantExperience" class="form-input" min="0" placeholder="0">
                             </div>
                             <div class="form-group">
                                 <label>&nbsp;</label>
@@ -224,9 +216,12 @@
                             <thead>
                                 <tr>
                                     <th>Applicant</th>
-                                    <th>Position Applied</th>
+                                    <th>Position</th>
+                                    <th>Phone</th>
+                                    <th>Experience</th>
                                     <th>Date</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="applicantTableBody"></tbody>
@@ -237,8 +232,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 
@@ -324,6 +318,57 @@
                     <div class="form-group">
                         <label>Number of Applicants</label>
                         <input type="number" name="editPositionApplicants" class="form-input" min="0" placeholder="0">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Applicant Modal -->
+    <div class="modal-overlay" id="editApplicantModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Applicant</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form onsubmit="handleEditApplicant(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="editApplicantId">
+                    <div class="form-group">
+                        <label>Applicant Name</label>
+                        <input type="text" name="editApplicantName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="editApplicantEmail" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" name="editApplicantPhone" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Position Applied For</label>
+                        <input type="text" name="editApplicantPosition" class="form-input" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Experience (years)</label>
+                            <input type="number" name="editApplicantExperience" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="editApplicantStatus" class="form-input">
+                                <option value="New">New</option>
+                                <option value="Under Review">Under Review</option>
+                                <option value="Interview Scheduled">Interview Scheduled</option>
+                                <option value="Offer Sent">Offer Sent</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -77,10 +77,13 @@
                         <input type="text" placeholder="Search employees, properties...">
                     </div>
                     <div class="header-actions">
-                        <button class="header-btn" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            <span class="notification-dot"></span>
-                        </button>
+                        <div class="notification-wrapper">
+                            <button class="header-btn" aria-label="Notifications" id="notificationBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                <span class="notification-dot" id="notificationDot" style="display:none;"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown"></div>
+                        </div>
                         <div class="user-avatar">SM</div>
                     </div>
                 </div>
@@ -140,7 +143,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                         </div>
                         <div class="stat-info">
-                            <h4>28</h4>
+                            <h4 data-stat="activeListings">0</h4>
                             <p>Active Listings</p>
                         </div>
                     </div>
@@ -158,7 +161,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                         </div>
                         <div class="stat-info">
-                            <h4>5</h4>
+                            <h4 data-stat="openPositions">0</h4>
                             <p>Open Positions</p>
                         </div>
                     </div>
@@ -195,36 +198,7 @@
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header"><h3>Recent Activity</h3></div>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-dot green"></div>
-                                <div class="activity-content">
-                                    <p><strong>James Rodriguez</strong> accepted offer for Senior Agent position</p>
-                                    <span class="activity-time">2 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot blue"></div>
-                                <div class="activity-content">
-                                    <p><strong>Emily Chen</strong> submitted performance review for Q2</p>
-                                    <span class="activity-time">4 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot gold"></div>
-                                <div class="activity-content">
-                                    <p><strong>Property listing</strong> at 456 Oak Avenue assigned to Michael Torres</p>
-                                    <span class="activity-time">Yesterday</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot red"></div>
-                                <div class="activity-content">
-                                    <p><strong>Leave request</strong> from Amanda Foster pending approval</p>
-                                    <span class="activity-time">Yesterday</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="activity-list" id="recentActivityList"></div>
                     </div>
                     <div class="card">
                         <div class="card-header"><h3>Quick Actions</h3></div>
@@ -354,85 +328,94 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
     <script>
-    // Dashboard salary table
     function renderDashboardSalaryTable() {
         var tbody = document.getElementById('dashboardSalaryTable');
         if (!tbody) return;
-        var employees = getData('employees', []);
+        var employees = appData.employees || [];
         var html = '';
         employees.forEach(function(emp) {
             var monthly = Math.round((emp.salary || 0) / 12);
             html += '<tr>' +
-                '<td><div class="employee-row"><div class="employee-avatar ' + emp.avatarClass + '">' + emp.avatar + '</div><div><div class="employee-name">' + emp.name + '</div><div class="employee-role">' + emp.email + '</div></div></div></td>' +
-                '<td>' + emp.department + '</td>' +
-                '<td>' + emp.position + '</td>' +
+                '<td><div class="employee-row"><div class="employee-avatar ' + (emp.avatar_class || 'avatar-blue') + '">' + (emp.initials || '??') + '</div><div><div class="employee-name">' + emp.name + '</div><div class="employee-role">' + (emp.email || '') + '</div></div></div></td>' +
+                '<td>' + (emp.department || '') + '</td>' +
+                '<td>' + (emp.position || '') + '</td>' +
                 '<td><strong>$' + (emp.salary || 0).toLocaleString() + '</strong></td>' +
                 '<td>$' + monthly.toLocaleString() + '</td>' +
-                '<td><button class="btn btn-sm btn-primary" onclick="editDashboardSalary(' + emp.id + ')">Edit Salary</button></td>' +
+                '<td><button class="btn btn-sm btn-primary" onclick="editDashboardSalary(\'' + emp.id + '\')">Edit Salary</button></td>' +
                 '</tr>';
         });
         tbody.innerHTML = html;
     }
     function editDashboardSalary(id) {
-        var employees = getData('employees', []);
-        var emp = employees.find(function(e) { return e.id === id; });
+        var emp = appData.employees.find(function(e) { return e.id === id; });
         if (!emp) return;
         var modal = document.getElementById('editSalaryModal');
         modal.querySelector('[name="editEmpId"]').value = id;
         modal.querySelector('[name="editEmpName"]').value = emp.name;
-        modal.querySelector('[name="editEmpDept"]').value = emp.department;
-        modal.querySelector('[name="editEmpPosition"]').value = emp.position;
-        modal.querySelector('[name="editEmpSalary"]').value = emp.salary;
+        modal.querySelector('[name="editEmpDept"]').value = emp.department || '';
+        modal.querySelector('[name="editEmpPosition"]').value = emp.position || '';
+        modal.querySelector('[name="editEmpSalary"]').value = emp.salary || 0;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-    function handleEditSalary(e) {
+    async function handleEditSalary(e) {
         e.preventDefault();
         var fd = new FormData(e.target);
-        var id = parseInt(fd.get('editEmpId'));
-        var employees = getData('employees', []);
-        var emp = employees.find(function(e) { return e.id === id; });
-        if (!emp) return;
-        emp.name = fd.get('editEmpName');
-        emp.department = fd.get('editEmpDept');
-        emp.position = fd.get('editEmpPosition');
-        emp.salary = parseInt(fd.get('editEmpSalary')) || 0;
-        setData('employees', employees);
-        var overlay = e.target.closest('.modal-overlay');
-        if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
-        showSuccess('Salary updated for ' + emp.name + '!');
-        renderDashboardSalaryTable();
-        updateDashboardStats();
+        var id = fd.get('editEmpId');
+        try {
+            await API.updateEmployee(id, {
+                name: fd.get('editEmpName'),
+                department: fd.get('editEmpDept'),
+                position: fd.get('editEmpPosition'),
+                salary: parseInt(fd.get('editEmpSalary')) || 0
+            });
+            var data = await API.getEmployees();
+            appData.employees = data.employees;
+            var overlay = e.target.closest('.modal-overlay');
+            if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+            showSuccess('Salary updated!');
+            renderDashboardSalaryTable();
+            updateDashboardStats();
+        } catch (err) {
+            showSuccess('Error: ' + err.message);
+        }
     }
-    function handleAddSalary(e) {
+    async function handleAddSalary(e) {
         e.preventDefault();
         var fd = new FormData(e.target);
         var name = fd.get('empName');
-        var employees = getData('employees', []);
-        var initials = name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().substring(0, 2);
-        var colors = ['avatar-blue','avatar-green','avatar-purple','avatar-pink','avatar-gold','avatar-red'];
-        employees.push({
-            id: Date.now(), name: name, email: fd.get('empEmail') || '',
-            department: fd.get('empDept'), position: fd.get('empPosition'),
-            startDate: fd.get('empDate'), salary: parseInt(fd.get('empSalary')) || 0,
-            status: 'Active', avatar: initials, avatarClass: colors[employees.length % colors.length]
-        });
-        setData('employees', employees);
-        var overlay = e.target.closest('.modal-overlay');
-        if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
-        e.target.reset();
-        showSuccess(name + ' added with salary!');
-        renderDashboardSalaryTable();
-        updateDashboardStats();
+        try {
+            await API.addEmployee({
+                name: name,
+                email: fd.get('empEmail') || '',
+                department: fd.get('empDept'),
+                position: fd.get('empPosition'),
+                startDate: fd.get('empDate'),
+                salary: parseInt(fd.get('empSalary')) || 0,
+                status: 'Active'
+            });
+            var data = await API.getEmployees();
+            appData.employees = data.employees;
+            var overlay = e.target.closest('.modal-overlay');
+            if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+            e.target.reset();
+            showSuccess(name + ' added with salary!');
+            renderDashboardSalaryTable();
+            updateDashboardStats();
+        } catch (err) {
+            showSuccess('Error: ' + err.message);
+        }
     }
     document.addEventListener('DOMContentLoaded', function() {
-        renderDashboardSalaryTable();
-        updateDashboardStats();
+        setTimeout(function() {
+            renderDashboardSalaryTable();
+            updateDashboardStats();
+            renderDashboardActivity();
+        }, 500);
     });
     </script>
 </body>

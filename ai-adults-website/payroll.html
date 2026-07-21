@@ -77,10 +77,13 @@
                         <input type="text" placeholder="Search employees...">
                     </div>
                     <div class="header-actions">
-                        <button class="header-btn" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            <span class="notification-dot"></span>
-                        </button>
+                        <div class="notification-wrapper">
+                            <button class="header-btn" aria-label="Notifications" id="notificationBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                <span class="notification-dot" id="notificationDot" style="display:none;"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown"></div>
+                        </div>
                         <div class="user-avatar">SM</div>
                     </div>
                 </div>
@@ -397,8 +400,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>

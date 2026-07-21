@@ -44,18 +44,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
     <script src="js/auth.js"></script>
     <script>
-    // Redirect if already logged in
-    if (window.supabaseClient) {
-        window.supabaseClient.auth.getSession().then(function(result) {
-            if (result.data.session) {
-                window.location.href = 'index.html';
-            }
-        });
-    }
+    fetch('/api/auth/session', { credentials: 'same-origin' })
+        .then(function(r) { return r.json(); })
+        .then(function(data) { if (data.session) window.location.href = 'index.html'; });
 
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();

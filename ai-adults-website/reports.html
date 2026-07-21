@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="app-layout">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -46,9 +45,8 @@
                 </a>
                 <a href="payroll.html" class="sidebar-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    Payroll & Benefits
+                    Payroll &amp; Benefits
                 </a>
-
                 <div class="sidebar-section-title">Properties</div>
                 <a href="properties.html" class="sidebar-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/></svg>
@@ -62,104 +60,60 @@
                 <div class="sidebar-section-title">Analytics</div>
                 <a href="reports.html" class="sidebar-link active">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                    Reports & Analytics
+                    Reports &amp; Analytics
                 </a>
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <div class="main-content">
-            <!-- Top Header -->
             <header class="top-header">
                 <div class="top-header-left">
                     <button class="mobile-menu-btn" aria-label="Toggle menu">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </button>
-                    <h1 class="page-title">Reports & Analytics</h1>
+                    <h1 class="page-title">Reports &amp; Analytics</h1>
                 </div>
                 <div class="top-header-right">
                     <div class="header-search">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <input type="text" placeholder="Search employees, properties...">
+                        <input type="text" placeholder="Search...">
                     </div>
                     <div class="header-actions">
-                        <button class="header-btn" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            <span class="notification-dot"></span>
-                        </button>
+                        <div class="notification-wrapper">
+                            <button class="header-btn" aria-label="Notifications" id="notificationBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                <span class="notification-dot" id="notificationDot" style="display:none;"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown"></div>
+                        </div>
                         <div class="user-avatar">SM</div>
                     </div>
                 </div>
             </header>
 
-            <!-- Page Content -->
             <div class="page-content">
-                <!-- Page Hero Banner -->
                 <div class="page-hero">
-                    <h1>Reports & Analytics</h1>
-                    <p>Gain valuable HR insights and track company performance with comprehensive analytics across all departments.</p>
+                    <h1>Reports &amp; Analytics</h1>
+                    <p>Gain valuable HR insights and track company performance with comprehensive analytics.</p>
                 </div>
 
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                        <div class="stat-info">
-                            <h4>2.8 years</h4>
-                            <p>Avg Employee Tenure</p>
-                            <span class="stat-change up">+0.3 vs last year</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon gold">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><path d="M19 21H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"/></svg>
-                        </div>
-                        <div class="stat-info">
-                            <h4>4.2/5</h4>
-                            <p>Employee Satisfaction</p>
-                            <span class="stat-change up">+0.4 improvement</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon red">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-                        </div>
-                        <div class="stat-info">
-                            <h4>7.1%</h4>
-                            <p>Turnover Rate</p>
-                            <span class="stat-change down">+1.2% vs Q1</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                        </div>
-                        <div class="stat-info">
-                            <h4>1,240</h4>
-                            <p>Training Hours (YTD)</p>
-                            <span class="stat-change up">+180 this quarter</span>
-                        </div>
-                    </div>
+                <!-- Summary Metrics (Dynamic) -->
+                <div class="toolbar" style="margin-bottom: var(--space-md);">
+                    <div class="toolbar-left"><h3>Summary Metrics</h3></div>
+                    <button class="btn btn-primary" data-modal="addMetricModal">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Metric
+                    </button>
                 </div>
+                <div class="stats-grid" id="metricsGrid"></div>
 
-                <!-- Department Breakdown -->
+                <!-- Department Breakdown (Computed from employees) -->
                 <div class="card" style="margin-bottom: var(--space-xl);">
                     <div class="card-header">
                         <h3>Department Breakdown</h3>
-                        <button class="btn btn-sm btn-secondary">Export</button>
+                        <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);margin:0;">Auto-calculated from your employees</p>
                     </div>
-                    <div class="chart-container">
-                        <div class="chart-bars">
-                            <div class="chart-bar" style="height: 100%; background: #1E3A5F;" data-label="Sales"></div>
-                            <div class="chart-bar" style="height: 33%; background: #C9A84C;" data-label="Admin"></div>
-                            <div class="chart-bar" style="height: 17%; background: #276749;" data-label="Marketing"></div>
-                            <div class="chart-bar" style="height: 12.5%; background: #C53030;" data-label="Finance"></div>
-                            <div class="chart-bar" style="height: 8.3%; background: #6B46C1;" data-label="Legal"></div>
-                            <div class="chart-bar" style="height: 4.2%; background: #D53F8C;" data-label="Support"></div>
-                        </div>
-                    </div>
+                    <div class="chart-container" id="departmentChart"></div>
                 </div>
 
                 <!-- Two Column Grid -->
@@ -168,72 +122,35 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Top Performing Agents</h3>
-                            <button class="btn btn-sm btn-secondary">View All</button>
+                            <button class="btn btn-sm btn-primary" onclick="this.closest('.card').querySelector('.add-section').style.display='block'">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Add
+                            </button>
+                        </div>
+                        <div class="add-section" style="display:none; padding: 0 16px 12px;">
+                            <form id="addAgentForm" onsubmit="handleAddAgentPerf(event)">
+                                <div class="form-row">
+                                    <div class="form-group"><input type="text" name="agentName" class="form-input" placeholder="Agent name" required style="font-size:13px;"></div>
+                                    <div class="form-group"><input type="number" name="agentSales" class="form-input" placeholder="Sales" min="0" required style="font-size:13px;"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group"><input type="text" name="agentRevenue" class="form-input" placeholder="Revenue e.g. $4.2M" required style="font-size:13px;"></div>
+                                    <div class="form-group">
+                                        <select name="agentStatus" class="form-input" style="font-size:13px;">
+                                            <option value="Good">Good</option>
+                                            <option value="Excellent">Excellent</option>
+                                            <option value="Top Performer">Top Performer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                                <button type="button" class="btn btn-sm btn-secondary" onclick="this.closest('.add-section').style.display='none'">Cancel</button>
+                            </form>
                         </div>
                         <div class="table-wrapper">
                             <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Agent</th>
-                                        <th>Sales</th>
-                                        <th>Revenue</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="employee-row">
-                                                <div class="employee-avatar avatar-blue">JR</div>
-                                                <div>
-                                                    <div class="employee-name">James Rodriguez</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>12</td>
-                                        <td>$4.2M</td>
-                                        <td><span class="badge badge-gold">Top Performer</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="employee-row">
-                                                <div class="employee-avatar avatar-green">MT</div>
-                                                <div>
-                                                    <div class="employee-name">Michael Torres</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>10</td>
-                                        <td>$3.8M</td>
-                                        <td><span class="badge badge-primary">Excellent</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="employee-row">
-                                                <div class="employee-avatar avatar-purple">EC</div>
-                                                <div>
-                                                    <div class="employee-name">Emily Chen</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8</td>
-                                        <td>$2.9M</td>
-                                        <td><span class="badge badge-primary">Excellent</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="employee-row">
-                                                <div class="employee-avatar avatar-gold">TH</div>
-                                                <div>
-                                                    <div class="employee-name">Thomas Harris</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>5</td>
-                                        <td>$1.7M</td>
-                                        <td><span class="badge badge-info">Good</span></td>
-                                    </tr>
-                                </tbody>
+                                <thead><tr><th>Agent</th><th>Sales</th><th>Revenue</th><th>Status</th><th></th></tr></thead>
+                                <tbody id="agentTableBody"></tbody>
                             </table>
                         </div>
                     </div>
@@ -242,104 +159,137 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Monthly Hiring Trends</h3>
-                            <button class="btn btn-sm btn-secondary">Details</button>
+                            <button class="btn btn-sm btn-primary" onclick="this.closest('.card').querySelector('.add-section').style.display='block'">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Add
+                            </button>
                         </div>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-dot blue"></div>
-                                <div class="activity-content">
-                                    <p><strong>January</strong> — 2 hires</p>
-                                    <span class="activity-time">Sales & Marketing</span>
+                        <div class="add-section" style="display:none; padding: 0 16px 12px;">
+                            <form id="addTrendForm" onsubmit="handleAddHiringTrend(event)">
+                                <div class="form-row">
+                                    <div class="form-group"><input type="text" name="trendMonth" class="form-input" placeholder="Month e.g. January" required style="font-size:13px;"></div>
+                                    <div class="form-group"><input type="number" name="trendHires" class="form-input" placeholder="Hires" min="0" required style="font-size:13px;"></div>
                                 </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot gold"></div>
-                                <div class="activity-content">
-                                    <p><strong>February</strong> — 1 hire</p>
-                                    <span class="activity-time">Admin</span>
+                                <div class="form-row">
+                                    <div class="form-group"><input type="text" name="trendDepts" class="form-input" placeholder="Departments" style="font-size:13px;"></div>
+                                    <div class="form-group">
+                                        <select name="trendStatus" class="form-input" style="font-size:13px;">
+                                            <option value="Completed">Completed</option>
+                                            <option value="In Progress">In Progress</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot green"></div>
-                                <div class="activity-content">
-                                    <p><strong>March</strong> — 3 hires</p>
-                                    <span class="activity-time">Sales, Finance & Support</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot red"></div>
-                                <div class="activity-content">
-                                    <p><strong>April</strong> — 0 hires</p>
-                                    <span class="activity-time">Hiring freeze period</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot blue"></div>
-                                <div class="activity-content">
-                                    <p><strong>May</strong> — 2 hires</p>
-                                    <span class="activity-time">Sales & Legal</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot green"></div>
-                                <div class="activity-content">
-                                    <p><strong>June</strong> — 4 hires</p>
-                                    <span class="activity-time">Sales & Admin</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-dot gold"></div>
-                                <div class="activity-content">
-                                    <p><strong>July</strong> — 3 hires <span class="badge badge-pending" style="margin-left: 6px;">In Progress</span></p>
-                                    <span class="activity-time">Pending onboarding</span>
-                                </div>
-                            </div>
+                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                                <button type="button" class="btn btn-sm btn-secondary" onclick="this.closest('.add-section').style.display='none'">Cancel</button>
+                            </form>
                         </div>
+                        <div class="activity-list" id="hiringTrendsList"></div>
                     </div>
                 </div>
 
-                <!-- Key Metrics -->
+                <!-- Key Recruitment Metrics -->
                 <div style="margin-top: var(--space-xl);">
                     <h3 style="margin-bottom: var(--space-lg);">Key Recruitment Metrics</h3>
-                    <div class="grid-3">
-                        <div class="stat-card">
-                            <div class="stat-icon blue">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <h4>23 days</h4>
-                                <p>Avg Time to Hire</p>
-                                <span class="stat-change up">-4 days vs last quarter</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon gold">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <h4>$3,450</h4>
-                                <p>Cost per Hire</p>
-                                <span class="stat-change up">-$350 below budget</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon green">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <h4>85%</h4>
-                                <p>Offer Acceptance Rate</p>
-                                <span class="stat-change up">+5% vs last quarter</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid-3" id="keyMetricsGrid"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
+    <!-- Add Metric Modal -->
+    <div class="modal-overlay" id="addMetricModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Metric</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addMetricForm" onsubmit="handleAddReportMetric(event)">
+                    <div class="form-group"><label>Metric Name</label><input type="text" name="metricName" class="form-input" placeholder="e.g. Avg Employee Tenure" required></div>
+                    <div class="form-group"><label>Value</label><input type="text" name="metricValue" class="form-input" placeholder="e.g. 2.8 years" required></div>
+                    <div class="form-group"><label>Change</label><input type="text" name="metricChange" class="form-input" placeholder="e.g. +0.3 vs last year"></div>
+                    <div class="form-group"><label>Direction</label><select name="metricDirection" class="form-input"><option value="up">Up (positive)</option><option value="down">Down (negative)</option></select></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-cancel">Cancel</button>
+                <button class="btn btn-primary" type="submit" form="addMetricForm">Add Metric</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Metric Modal -->
+    <div class="modal-overlay" id="editMetricModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Metric</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editMetricForm" onsubmit="handleEditReportMetric(event)">
+                    <input type="hidden" name="editMetricId">
+                    <div class="form-group"><label>Metric Name</label><input type="text" name="editMetricName" class="form-input" required></div>
+                    <div class="form-group"><label>Value</label><input type="text" name="editMetricValue" class="form-input" required></div>
+                    <div class="form-group"><label>Change</label><input type="text" name="editMetricChange" class="form-input"></div>
+                    <div class="form-group"><label>Direction</label><select name="editMetricDirection" class="form-input"><option value="up">Up (positive)</option><option value="down">Down (negative)</option></select></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-cancel">Cancel</button>
+                <button class="btn btn-primary" type="submit" form="editMetricForm">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Agent Modal -->
+    <div class="modal-overlay" id="editAgentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Agent Performance</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editAgentForm" onsubmit="handleEditAgentPerf(event)">
+                    <input type="hidden" name="editAgentId">
+                    <div class="form-group"><label>Agent Name</label><input type="text" name="editAgentName" class="form-input" required></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Sales</label><input type="number" name="editAgentSales" class="form-input" min="0" required></div>
+                        <div class="form-group"><label>Revenue</label><input type="text" name="editAgentRevenue" class="form-input" required></div>
+                    </div>
+                    <div class="form-group"><label>Status</label><select name="editAgentStatus" class="form-input"><option value="Good">Good</option><option value="Excellent">Excellent</option><option value="Top Performer">Top Performer</option></select></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-cancel">Cancel</button>
+                <button class="btn btn-primary" type="submit" form="editAgentForm">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Hiring Trend Modal -->
+    <div class="modal-overlay" id="editTrendModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Hiring Trend</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editTrendForm" onsubmit="handleEditHiringTrend(event)">
+                    <input type="hidden" name="editTrendId">
+                    <div class="form-group"><label>Month</label><input type="text" name="editTrendMonth" class="form-input" required></div>
+                    <div class="form-group"><label>Number of Hires</label><input type="number" name="editTrendHires" class="form-input" min="0" required></div>
+                    <div class="form-group"><label>Departments</label><input type="text" name="editTrendDepts" class="form-input" placeholder="e.g. Sales &amp; Marketing"></div>
+                    <div class="form-group"><label>Status</label><select name="editTrendStatus" class="form-input"><option value="Completed">Completed</option><option value="In Progress">In Progress</option></select></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-cancel">Cancel</button>
+                <button class="btn btn-primary" type="submit" form="editTrendForm">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>
